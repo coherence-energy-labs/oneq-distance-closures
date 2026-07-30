@@ -1,0 +1,108 @@
+{
+  "ell": 9,
+  "m": 6,
+  "A_terms": [
+    [
+      0,
+      1
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "B_terms": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "C_terms": [
+    [
+      5,
+      1
+    ]
+  ],
+  "D_terms": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "n": 108,
+  "k": 2,
+  "d": 10,
+  "fom": 1.8519,
+  "d_method": "deep_milp",
+  "d_milp": 10,
+  "d_bposd": 12,
+  "milp_exact": false,
+  "timestamp": 1773328607.96728,
+  "bliss_hash": "426b9d530929e62e",
+  "bliss_group_size": 1,
+  "code_id": "9_6_0172",
+  "verified_at": "2026-03-12T23:28:58.256231+00:00",
+  "d_is_exact": false,
+  "d_over_sqrtn": 0.962,
+  "trust_level": "TRUSTED",
+  "time_s": 330.1,
+  "lc_hadamard": false,
+  "lc_uniform": false,
+  "lc_uniform_s1": null,
+  "lc_uniform_s2": null,
+  "lc_nonuniform_IS_HS": true,
+  "lc_uniform_solutions": [],
+  "lc_any": false,
+  "d_milp_initial": 14,
+  "d_is_upper_bound": true,
+  "publication_quality": false,
+  "d_deep_milp": 10,
+  "d_original": 10,
+  "fom_deep": 1.8519,
+  "milp_exact_deep": false,
+  "per_logical": [
+    {
+      "w": 10,
+      "opt": true,
+      "t": 557.5
+    },
+    {
+      "w": 10,
+      "opt": true,
+      "t": 531.6
+    },
+    {
+      "w": 21,
+      "opt": false,
+      "t": 3600.3
+    },
+    {
+      "w": 10,
+      "opt": true,
+      "t": 404.2
+    }
+  ],
+  "logicals_optimal": 3,
+  "logicals_incumbent": 1,
+  "logicals_failed": 0,
+  "total_logicals": 4,
+  "deep_milp_time_s": 4659.2,
+  "timeout_per_logical": 3600,
+  "deep_verified_at": "2026-05-29T13:25:01.595544+00:00"
+}

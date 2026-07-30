@@ -26,6 +26,7 @@ whole program is built to avoid.
 from __future__ import annotations
 
 import json
+import re
 import pathlib
 import sys
 
@@ -66,18 +67,61 @@ def catalogue():
 
 
 
-def _trusted_pubkeys() -> set[str]:
-    """Issuer keys pinned in ISSUERS.json. Public keys only, never contacted."""
+def _load_issuers() -> tuple[set[str], set[str], str]:
+    """(active, revoked, why) from ISSUERS.json -- VALIDATED, never assumed.
+
+    THE FAIL-OPEN THIS REPLACES, found by external review. The old loader
+    returned an empty set on a missing OR malformed registry, and the caller
+    read `if trusted and pubkey not in trusted` -- so an empty registry
+    DISABLED the check entirely and the certificate was verified against the
+    public key embedded in the certificate itself. An attacker who deleted or
+    corrupted ISSUERS.json could then self-sign a certificate that passed
+    authenticity. Deleting a file is not an attack that should grant trust.
+
+    Every failure mode below now yields an explicit reason string, and the
+    caller REFUSES whenever the active set is empty. Validation performed
+    here rather than trusted: schema pin, 64-hex keys, active/revoked
+    disjointness, duplicate rejection.
+    """
     for base in (pathlib.Path(__file__).resolve().parent,
                  pathlib.Path(__file__).resolve().parent.parent):
         f = base / "ISSUERS.json"
-        if f.exists():
-            try:
-                d = json.loads(f.read_text(encoding="utf-8"))
-                return {i["pubkey"] for i in d.get("issuers", []) if i.get("pubkey")}
-            except Exception:
-                return set()
-    return set()
+        if not f.exists():
+            continue
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except Exception as exc:
+            return set(), set(), f"ISSUERS.json is unparseable: {exc}"
+        if d.get("schema") != "oneq-issuers/1":
+            return set(), set(), (f"issuer registry schema "
+                                  f"{d.get('schema')!r} != 'oneq-issuers/1'")
+        hexok = lambda k: isinstance(k, str) and re.fullmatch(r"[0-9a-f]{64}", k)
+        act, rev = [], []
+        for i in d.get("issuers", []):
+            k = i.get("pubkey")
+            if not hexok(k):
+                return set(), set(), f"issuer key is not 64-hex: {str(k)[:24]!r}"
+            if i.get("status") == "active":
+                act.append(k)
+        for i in d.get("revoked", []):
+            k = i.get("pubkey")
+            if hexok(k):
+                rev.append(k)
+        if len(set(act)) != len(act):
+            return set(), set(), "duplicate active issuer keys"
+        both = set(act) & set(rev)
+        if both:
+            return set(), set(), (f"key appears BOTH active and revoked: "
+                                  f"{sorted(both)[0][:16]}...")
+        if not act:
+            return set(), set(), "issuer registry lists no ACTIVE issuer"
+        return set(act), set(rev), "ok"
+    return set(), set(), "ISSUERS.json not found beside or above the verifier"
+
+
+def _trusted_pubkeys() -> set[str]:
+    """Back-compat shim: active keys only (callers must handle emptiness)."""
+    return _load_issuers()[0]
 
 
 def _signature_ok(code_id: str, cert: dict) -> tuple[bool, str]:
@@ -94,9 +138,17 @@ def _signature_ok(code_id: str, cert: dict) -> tuple[bool, str]:
         from oneq.passport import digest_obj
     except Exception as exc:                                  # pragma: no cover
         return False, f"cannot verify signatures here: {exc}"
-    trusted = _trusted_pubkeys()
-    if trusted and sig.get("pubkey") not in trusted:
-        return False, f"signed by an UNPINNED key {sig.get('pubkey','')[:16]}..."
+    # FAIL CLOSED. A verifier that claims to enforce issuer pinning must
+    # refuse when it cannot load the pins -- otherwise deleting a file buys
+    # an attacker the trust the file was there to withhold.
+    trusted, revoked, why = _load_issuers()
+    if not trusted:
+        return False, f"NO TRUSTED ISSUER REGISTRY -- refusing ({why})"
+    key = sig.get("pubkey")
+    if key in revoked:
+        return False, f"signed by a REVOKED key {str(key)[:16]}..."
+    if key not in trusted:
+        return False, f"signed by an UNPINNED key {str(key)[:16]}..."
     recomputed = digest_obj(certificate_core(code_id, cert))
     if recomputed != sig.get("digest"):
         return False, ("the signed core does not match the certificate: a field "

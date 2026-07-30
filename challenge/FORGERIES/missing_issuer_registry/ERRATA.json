@@ -1,0 +1,82 @@
+{
+  "note": "Every claim this programme retracted or corrected. Several were withdrawn by its own gates before publication.",
+  "errata": [
+    {
+      "id": "E1",
+      "claim": "A_d spans 2..36 across identical-d codes -- an 18x spread in the leading error prefactor",
+      "status": "RETRACTED",
+      "why": "multiplicity was tallied at the depth where the BOUND was met (p=3) rather than where the COUNT is complete (p>=d=6); the flag asserting completeness was hardcoded true",
+      "replaced_by": "at p=d the raw spread is 1.1x (96..108); what varies is the distribution over logical classes (6..18), and all ten codes share a [24,24,24,8,8,8] core"
+    },
+    {
+      "id": "E2",
+      "claim": "ARR reopens -- V_E measured at 6.2..91",
+      "status": "RETRACTED",
+      "why": "the unlocated arm could not decode a single correctable erasure; the intervals were tight because the comparison was mismatched",
+      "replaced_by": "V_E = 1.645..2.961 exact ML; ARR stays dead as specified"
+    },
+    {
+      "id": "E3",
+      "claim": "graphlike decomposition destroys locatedness",
+      "status": "RETRACTED",
+      "why": "decomposed and undecomposed DEMs are identical -- 17 mechanisms, same herald structure",
+      "replaced_by": "pymatching discards the grouping at ingestion"
+    },
+    {
+      "id": "E4",
+      "claim": "V_E = 1.000 realized by peeling",
+      "status": "RETRACTED",
+      "why": "a candidate cap (weight<=3, data-only) applied to BOTH arms cancelled in the ratio",
+      "replaced_by": "exhaustive min-weight gives 1.900..2.405"
+    },
+    {
+      "id": "E5",
+      "claim": "the multi-engine router is the breakthrough",
+      "status": "CORRECTED",
+      "why": "all five closures came from bz.py alone; MITM/SAT/peeling are validated but have produced no promoted closure",
+      "replaced_by": "the qubit-paired Zimmermann reduction, 3,190x"
+    },
+    {
+      "id": "E6",
+      "claim": "G3 fault injection covers the syndrome-preserving blind space",
+      "status": "CORRECTED",
+      "why": "random corruption enters a dimension-78 kernel with probability 2^-66; the sampler never visited the blind spot",
+      "replaced_by": "adversarial injection drawn from ker(H); every blind-spot fault was logical, and the window check caught 100%"
+    },
+    {
+      "id": "E7",
+      "claim": "the mutation gate is complete at 14/14",
+      "status": "CORRECTED",
+      "why": "five mutants had never executed; the first sandboxed run found three survivors and one that had drifted into a SKIP",
+      "replaced_by": "19/19 killed, after repairing three decorative checks"
+    },
+    {
+      "id": "E8",
+      "claim": "CPU and GPU kernels disagree at n=108",
+      "status": "WITHDRAWN BEFORE PUBLICATION",
+      "why": "a CPU timeout misread as substrate disagreement",
+      "replaced_by": "6/6 byte-identical at equal completed depth"
+    },
+    {
+      "id": "E9",
+      "claim": "the independent challenge found 252 violations in 9_6_0172",
+      "status": "WITHDRAWN BEFORE PUBLICATION",
+      "why": "the refutation test was inverted -- it flagged candidates that WERE stabilizers; these codes carry weight-6 stabilizers against d=10, confirmed 4/4 against the rank test",
+      "replaced_by": "0 violations; the independent rebuild recovers the certified distance exactly on all ten replicas"
+    },
+    {
+      "id": "E10",
+      "claim": "the finer invariant finds THREE geometries",
+      "status": "CORRECTED (wording)",
+      "why": "the descriptor separates three HASHES; proving exactly three isomorphism classes needs a canonical form complete for a declared equivalence relation, with isomorphism witnesses. Rich invariants can still coincide on non-isomorphic structures",
+      "replaced_by": "three distinct geometry hashes under the current descriptor (stabilizer generators, block-weight vectors, per-block Pauli counts, Pauli-coloured difference multiset) -- exact and safe wording"
+    },
+    {
+      "id": "E11",
+      "claim": "quieting one qubit block 3x buys ~32x",
+      "status": "CORRECTED",
+      "why": "R_b(alpha) is a polynomial in alpha and therefore asymmetric about 1; a single point at alpha=3 was reported as if it were reversible",
+      "replaced_by": "3x noisier = 33.75x worse; 3x quieter = 21.60x better. Elasticity at baseline is E[r] = d/2 = 3 on all ten codes, and scaling BOTH blocks by alpha gives exactly alpha^d"
+    }
+  ]
+}

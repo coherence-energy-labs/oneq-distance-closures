@@ -1,0 +1,100 @@
+{
+  "ell": 9,
+  "m": 6,
+  "A_terms": [
+    [
+      0,
+      1
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "B_terms": [
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "C_terms": [
+    [
+      6,
+      1
+    ]
+  ],
+  "D_terms": [
+    [
+      1,
+      1
+    ]
+  ],
+  "n": 108,
+  "k": 2,
+  "d": 10,
+  "fom": 1.8519,
+  "d_method": "deep_milp",
+  "d_milp": 10,
+  "d_bposd": 10,
+  "milp_exact": false,
+  "timestamp": 1773322302.4644787,
+  "bliss_hash": "0571f76786029653",
+  "bliss_group_size": 2,
+  "lc_hadamard": false,
+  "lc_uniform": false,
+  "lc_uniform_s1": null,
+  "lc_uniform_s2": null,
+  "lc_nonuniform_IS_HS": true,
+  "lc_uniform_solutions": [],
+  "lc_any": false,
+  "trust_level": "TRUSTED",
+  "d_over_sqrtn": 0.962,
+  "d_is_exact": false,
+  "d_is_upper_bound": true,
+  "publication_quality": false,
+  "d_deep_milp": 10,
+  "d_original": 10,
+  "fom_deep": 1.8519,
+  "milp_exact_deep": false,
+  "per_logical": [
+    {
+      "w": 10,
+      "opt": true,
+      "t": 416.6
+    },
+    {
+      "w": 10,
+      "opt": true,
+      "t": 498.3
+    },
+    {
+      "w": 20,
+      "opt": false,
+      "t": 3600.2
+    },
+    {
+      "w": 21,
+      "opt": false,
+      "t": 3600.1
+    }
+  ],
+  "logicals_optimal": 2,
+  "logicals_incumbent": 2,
+  "logicals_failed": 0,
+  "total_logicals": 4,
+  "deep_milp_time_s": 4762.1,
+  "timeout_per_logical": 3600,
+  "deep_verified_at": "2026-05-29T13:26:44.492855+00:00"
+}

@@ -1,0 +1,187 @@
+{
+  "targets": [
+    "src\\oneq\\passport.py",
+    "src\\oneq\\isd.py",
+    "src\\oneq\\gbb.py",
+    "src\\oneq\\bz.py",
+    "src\\oneq\\mitm.py",
+    "src\\oneq\\satdist.py",
+    "src\\oneq\\certify.py"
+  ],
+  "mutated": "sandbox-copy",
+  "killed": 19,
+  "survived": 0,
+  "results": [
+    {
+      "id": "M0-weak-key-mint",
+      "why": "the historical defect: minting with a publicly-derivable key (bytes(32) seed)",
+      "find": "if pub_hex in WEAK_PUBKEYS and not allow_weak_key:",
+      "replace": "if False:",
+      "must_fail": "test_genesis_0_all_zeros_seed_is_refused_at_mint",
+      "target": "passport",
+      "outcome": "killed"
+    },
+    {
+      "id": "M1-weak-key-verify",
+      "why": "accepting a passport signed with a publicly-derivable key",
+      "find": "checks[\"key_not_weak\"] = pub not in WEAK_PUBKEYS",
+      "replace": "checks[\"key_not_weak\"] = True",
+      "must_fail": "test_genesis_0_weak_signed_passport_is_rejected_at_verify",
+      "target": "passport",
+      "outcome": "killed"
+    },
+    {
+      "id": "M2-no-provenance",
+      "why": "the old schema: provenance outside the signed core, so a result can be relabelled",
+      "find": "\"provenance\": provenance.to_core(),",
+      "replace": "",
+      "must_fail": "test_swapping_the_backend_breaks_the_digest",
+      "target": "passport",
+      "outcome": "killed"
+    },
+    {
+      "id": "M3-lattice-violation",
+      "why": "letting ACHIEVED exceed CLAIMED (breaks ACHIEVED = min(CLAIMED, REVERIFIABLE))",
+      "find": "achieved_final = max(0, min(int(claimed), int(achieved))) if valid else 0",
+      "replace": "achieved_final = max(0, int(achieved)) if valid else 0",
+      "must_fail": "test_claiming_less_than_you_can_prove_is_honoured",
+      "target": "passport",
+      "outcome": "killed"
+    },
+    {
+      "id": "M4-digest-not-checked",
+      "why": "accepting a tampered core because the digest is not recomputed",
+      "find": "checks[\"digest\"] = recomputed == passport[\"digest\"]",
+      "replace": "checks[\"digest\"] = True",
+      "must_fail": "test_tampering_with_the_claim_breaks_the_digest",
+      "target": "passport",
+      "outcome": "killed"
+    },
+    {
+      "id": "M6-false-proof",
+      "why": "a certified lower bound that exceeds the true distance -- a FALSE PROOF",
+      "find": "if best_w is not None and lb >= best_w:\n            wit =",
+      "replace": "if True:\n            wit =",
+      "must_fail": "test_certified_bound_never_exceeds_true_distance",
+      "target": "isd",
+      "outcome": "killed"
+    },
+    {
+      "id": "M7-stabilizer-as-logical",
+      "why": "INVERTING the logical/stabilizer filter -- returns a stabilizer as the witness",
+      "find": "keep = ~ls.is_stabilizer_batch(V)",
+      "replace": "keep = ls.is_stabilizer_batch(V)",
+      "must_fail": "test_proof_agrees_with_ibm_on_exact_codes",
+      "target": "isd",
+      "outcome": "killed"
+    },
+    {
+      "id": "M8-reconstruction-unchecked",
+      "why": "returning a code whose k disagrees with the published catalogue",
+      "find": "if expect_k is not None and code.k != expect_k:",
+      "replace": "if False:",
+      "must_fail": "test_reconstruction_is_faithful_to_the_catalogue",
+      "target": "gbb",
+      "outcome": "killed"
+    },
+    {
+      "id": "M9-deficiency-ignored",
+      "why": "charging nothing for rank deficiency -- inflates the Zimmermann bound into a FALSE PROOF",
+      "find": "info.contribution = max(0, p + 1 - info.deficiency)",
+      "replace": "info.contribution = max(0, p + 1)",
+      "must_fail": "test_certified_bound_never_exceeds_a_distance_ibm_proved",
+      "target": "bz",
+      "outcome": "killed"
+    },
+    {
+      "id": "M10-enumeration-incomplete",
+      "why": "dropping the Y option per qubit -- the enumeration misses operators it claims to have covered",
+      "find": "t = np.indices((3,) * p).reshape(p, -1).T if p else np.zeros((1, 0), int)",
+      "replace": "t = np.indices((2,) * p).reshape(p, -1).T if p else np.zeros((1, 0), int)",
+      "must_fail": "test_enumeration_is_exhaustive_at_its_stated_depth",
+      "target": "bz",
+      "outcome": "killed"
+    },
+    {
+      "id": "M11-weight-ignores-Z",
+      "why": "counting only the X half as qubit weight -- every weight the engine reports is wrong",
+      "find": "return popcount(V[..., :nwh] | V[..., nwh:], xp)",
+      "replace": "return popcount(V[..., :nwh], xp)",
+      "must_fail": "test_split_packing_roundtrips_and_weighs_correctly",
+      "target": "bz",
+      "outcome": "killed"
+    },
+    {
+      "id": "M12-keeps-stabilizers",
+      "why": "inverting the stabilizer filter -- the certificate's witness is a stabilizer, not a logical",
+      "find": "keep = par.astype(bool)",
+      "replace": "keep = ~par.astype(bool)",
+      "must_fail": "test_certificate_is_self_contained_and_the_witness_is_logical",
+      "target": "bz",
+      "outcome": "killed"
+    },
+    {
+      "id": "M13-no-catchup",
+      "why": "letting a set contribute a bound without enumerating its shallow depths",
+      "find": "todo = [(i, q) for i in active for q in range(swept[i] + 1, p + 1)]",
+      "replace": "todo = [(i, q) for i in active for q in range(p, p + 1)]",
+      "must_fail": "test_a_set_only_contributes_a_bound_it_enumerated_every_level_for",
+      "target": "bz",
+      "outcome": "killed"
+    },
+    {
+      "id": "M14-mitm-drops-a-split",
+      "why": "skipping a (h1,h2) split -- the collision sweep silently stops being exhaustive",
+      "find": "if h1 + h2 > W + 1:",
+      "replace": "if h1 + h2 > W + 1 or h2 == 1:",
+      "must_fail": "test_mitm_withdraws_its_negative_claim_if_any_split_went_unswept",
+      "target": "mitm",
+      "outcome": "killed"
+    },
+    {
+      "id": "M15-mitm-skips-stabilizer-rejection",
+      "why": "accepting a stabilizer as a logical -- MITM reports a distance that is not one",
+      "find": "        if ls.is_stabilizer(pack(v[None, :])[0]):\n            return None",
+      "replace": "        if False:\n            return None",
+      "must_fail": "test_mitm_returns_a_genuine_logical_not_a_stabilizer",
+      "target": "mitm",
+      "outcome": "killed"
+    },
+    {
+      "id": "M16-sat-one-anchor-only",
+      "why": "checking a single translation anchor -- UNSAT no longer covers every operator",
+      "find": "    for case in (0, 1):\n        cnf, xv, zv = _build_instance(code, W, case)\n        with Solver(",
+      "replace": "    for case in (0,):\n        cnf, xv, zv = _build_instance(code, W, case)\n        with Solver(",
+      "must_fail": "test_sat_unsat_is_refused_unless_both_anchor_cases_were_decided",
+      "target": "satdist",
+      "outcome": "killed"
+    },
+    {
+      "id": "M17-sat-drops-cardinality",
+      "why": "omitting the weight bound -- SAT answers a different question than the one asked",
+      "find": "    card = CardEnc.atmost(lits=wv, bound=W, vpool=pool, encoding=EncType.seqcounter)",
+      "replace": "    card = CardEnc.atmost(lits=wv, bound=len(wv), vpool=pool, encoding=EncType.seqcounter)",
+      "must_fail": "test_sat_matches_brute_force_both_directions",
+      "target": "satdist",
+      "outcome": "killed"
+    },
+    {
+      "id": "M18-router-accepts-unwitnessed-target",
+      "why": "certifying a bound with no verified witness -- the anti-tautology guard removed",
+      "find": "dec.refusal = \"no verified witness at the claimed bound -- refusing a target without evidence\"",
+      "replace": "dec.witness_weight = upper_bound; witness = np.zeros(2 * n, dtype=np.uint8)",
+      "must_fail": "test_router_refuses_a_target_it_cannot_witness",
+      "target": "certify",
+      "outcome": "killed"
+    },
+    {
+      "id": "M5-floats-allowed",
+      "why": "permitting floats in the signed core (cross-language formatting divergence)",
+      "find": "raise TypeError(\n            \"floats are not permitted",
+      "replace": "return obj\n    if False:\n        raise TypeError(\n            \"floats are not permitted",
+      "must_fail": "test_floats_are_refused_in_the_core",
+      "target": "passport",
+      "outcome": "killed"
+    }
+  ]
+}

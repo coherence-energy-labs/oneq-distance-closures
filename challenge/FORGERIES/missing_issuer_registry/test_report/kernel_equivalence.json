@@ -1,0 +1,100 @@
+{
+  "results": [
+    {
+      "code": "phase2_45",
+      "n": 36,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        96,
+        849990
+      ],
+      "gpu": [
+        6,
+        96,
+        849990
+      ]
+    },
+    {
+      "code": "phase2_46",
+      "n": 36,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        96,
+        849990
+      ],
+      "gpu": [
+        6,
+        96,
+        849990
+      ]
+    },
+    {
+      "code": "phase2_2",
+      "n": 36,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        96,
+        849990
+      ],
+      "gpu": [
+        6,
+        96,
+        849990
+      ]
+    },
+    {
+      "code": "phase2_5",
+      "n": 36,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        108,
+        849990
+      ],
+      "gpu": [
+        6,
+        108,
+        849990
+      ]
+    },
+    {
+      "code": "phase2_64",
+      "n": 108,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        0,
+        1148668221
+      ],
+      "gpu": [
+        6,
+        0,
+        1148668221
+      ]
+    },
+    {
+      "code": "phase2_65",
+      "n": 108,
+      "complete_match": true,
+      "identical": true,
+      "cpu": [
+        6,
+        0,
+        1148668221
+      ],
+      "gpu": [
+        6,
+        0,
+        1148668221
+      ]
+    }
+  ]
+}

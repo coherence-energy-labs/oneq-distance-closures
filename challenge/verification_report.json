@@ -1,8 +1,11 @@
 {
   "VALID_accepted": true,
-  "VALID_tree_sha256": "8be84ab26ce280dd1852a9c062d74f0eff6914b62b51544d2d3e8d4986cb39a3",
+  "VALID_tree_sha256": "27fc8f243412f5855d54524a48d21bf2806a337313b3f243e7fade57545c9af7",
   "forgery_altered_information_set_rejected": true,
   "forgery_downgraded_verifier_floor_rejected": true,
   "forgery_inflated_lower_bound_rejected": true,
+  "forgery_malformed_issuer_registry_rejected": true,
+  "forgery_missing_issuer_registry_rejected": true,
+  "forgery_revoked_issuer_rejected": true,
   "forgery_witness_substitution_rejected": true
 }

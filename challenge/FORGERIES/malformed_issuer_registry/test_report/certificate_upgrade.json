@@ -1,0 +1,123 @@
+{
+  "schema_version": "2.0.0",
+  "engine_fingerprint": {
+    "sources": {
+      "bz.py": "dd55c2726a680c2036bb017de1d2c31341ec6275075efac0e2ef533180c8b1af",
+      "gbb.py": "04a4d19732a5f2fc5fef01488eda9f970f3a3023491c1e2b01aafbe13a062633"
+    },
+    "digest": "2d20d251e8b57fbd71ffdd87cff268fee0c062cd6a7e55dd703d41e7ca669604"
+  },
+  "upgraded": 12,
+  "refused": 0,
+  "rows": [
+    {
+      "code_id": "9_6_0172",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "edd55691b41c142f",
+      "information_set_hash": "c5d96475dc924820969ed839d53f1be661864ce33c3736e9c65e361760c8232a"
+    },
+    {
+      "code_id": "9_6_0172",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "7d427368c1cb01e5",
+      "information_set_hash": "a8974a9d43d56d1b77ecbc27ff29c09b26ca4d106123ec598e35bb7a6f6e55db"
+    },
+    {
+      "code_id": "0571f76786029653",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "c797ed76d7b6ad08",
+      "information_set_hash": "6ca230067d20d44a7a69410c8cb466cfe0003994c06488aa19135fc4285d8ced"
+    },
+    {
+      "code_id": "0571f76786029653",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "c25a19c0187db266",
+      "information_set_hash": "d62d63a58e126dd4e0556c23423455b219963e864049a6e39b2620f2c34df868"
+    },
+    {
+      "code_id": "phase2_64",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "be11868109de261e",
+      "information_set_hash": "deb2e5e4cb05f68e981193a8b8f2988e02e065d9fdd25837484e636f36e30514"
+    },
+    {
+      "code_id": "phase2_64",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "867974dfd72c7d93",
+      "information_set_hash": "7f2a8ffc2fca97a797d3a74d0192378208b6bf271a5f1c57d6bb98bc6af1ab38"
+    },
+    {
+      "code_id": "phase2_65",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "32fa186146442744",
+      "information_set_hash": "a79d12d38d27fdfa9c8d09e95fa3b44993a7f683a28ebd36840cd2233de1e938"
+    },
+    {
+      "code_id": "phase2_65",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "65e7f0fde1872a1c",
+      "information_set_hash": "7ea6d9bb33bd2690782d42baf11115076fb55742a4afceb70d4620ac55997d06"
+    },
+    {
+      "code_id": "12_6_0199",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "207987d679b00011",
+      "information_set_hash": "f653be453896d196db637c2bba3c2c6d689aaca800e9c0dde99bc965b20e0336"
+    },
+    {
+      "code_id": "12_6_0199",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "8bbbcb19d54b37ee",
+      "information_set_hash": "b9b3548d69a73f54de3cd9b78651520e930911faf328207866decdcad34dabc1"
+    },
+    {
+      "code_id": "12_6_0201",
+      "replica": 0,
+      "seed": 100,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "50190c08ecca95fe",
+      "information_set_hash": "7eeee80143cef13fec2f3b143c3d63eb1f53f0d83b30cf89653e17d5f0148f09"
+    },
+    {
+      "code_id": "12_6_0201",
+      "replica": 1,
+      "seed": 101,
+      "plan_reproduced": true,
+      "detail": "deficiency, pivot_qubits, assigned_qubits match on every set",
+      "replica_id": "4a42425b8e219878",
+      "information_set_hash": "49ce612a66c41a427fcdf0a1d43c0a6ffb11dd0e6ccec65c2850fd890ee18011"
+    }
+  ],
+  "seconds": 4.9
+}

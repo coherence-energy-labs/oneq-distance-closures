@@ -1,0 +1,172 @@
+{
+  "ell": 12,
+  "m": 6,
+  "A_terms": [
+    [
+      2,
+      2
+    ],
+    [
+      9,
+      3
+    ],
+    [
+      9,
+      4
+    ]
+  ],
+  "B_terms": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      11,
+      4
+    ]
+  ],
+  "C_terms": [
+    [
+      2,
+      3
+    ],
+    [
+      9,
+      3
+    ]
+  ],
+  "D_terms": [
+    [
+      2,
+      5
+    ],
+    [
+      9,
+      5
+    ]
+  ],
+  "n": 144,
+  "k": 8,
+  "d": 8,
+  "fom": 3.5556,
+  "d_method": "deep_milp",
+  "d_milp": 8,
+  "d_bposd": 10,
+  "milp_exact": false,
+  "timestamp": 1773332349.407755,
+  "bliss_hash": "a8879ca668587ffa",
+  "bliss_group_size": 1,
+  "code_id": "12_6_0201",
+  "verified_at": "2026-03-12T23:49:50.315491+00:00",
+  "d_is_exact": false,
+  "d_over_sqrtn": 0.667,
+  "trust_level": "TRUSTED",
+  "time_s": 672.1,
+  "lc_hadamard": false,
+  "lc_uniform": false,
+  "lc_uniform_s1": null,
+  "lc_uniform_s2": null,
+  "lc_nonuniform_IS_HS": true,
+  "lc_uniform_solutions": [],
+  "lc_any": false,
+  "d_deep_milp": 8,
+  "d_original": 10,
+  "fom_deep": 3.5556,
+  "milp_exact_deep": false,
+  "per_logical": [
+    {
+      "w": 16,
+      "opt": true,
+      "t": 5738.7
+    },
+    {
+      "w": 16,
+      "opt": false,
+      "t": 14400.4
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 133.5
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 161.8
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 176.0
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 189.6
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 98.1
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 241.4
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 188.0
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 141.5
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 165.6
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 164.1
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 226.1
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 156.1
+    },
+    {
+      "w": 12,
+      "opt": true,
+      "t": 2320.7
+    },
+    {
+      "w": 12,
+      "opt": true,
+      "t": 1434.8
+    }
+  ],
+  "logicals_optimal": 15,
+  "logicals_incumbent": 1,
+  "logicals_failed": 0,
+  "total_logicals": 16,
+  "deep_milp_time_s": 14400.4,
+  "timeout_per_logical": 14400,
+  "deep_verified_at": "2026-05-29T15:16:02.575972+00:00",
+  "d_is_upper_bound": true,
+  "publication_quality": false,
+  "d_milp_initial": 18
+}
