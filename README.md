@@ -6,7 +6,7 @@ qcode-discovery catalogue. Companion to
 
 ## Verify in one command (~2 minutes, Python 3.10+ and numpy)
 
-    cd oneq-ibm-distance-closures-v1.0.1
+    cd oneq-ibm-distance-closures-v1.0.2
     PYTHONPATH=. python verifiers/verify_closures.py
 
 Expected: `6/6 closures fully re-verified ... 6/6 PROMOTABLE`.
@@ -42,13 +42,13 @@ succinctly machine-checkable — see `LIMITATIONS.md` in the bundle. One closure
 * **Evidence** (certificates, witnesses, reports): **CC-BY-4.0** — reuse
   freely **with attribution** to Coherence Energy Labs.
 * Certificates are Ed25519-signed; issuer public keys are pinned in
-  `oneq-ibm-distance-closures-v1.0.1/ISSUERS.json`. A signature proves
+  `oneq-ibm-distance-closures-v1.0.2/ISSUERS.json`. A signature proves
   authorship; the archive SHA-256 below proves integrity.
 
-Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.1.tar.gz`, attached to the
-v1.0.1 release):
+Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.2.tar.gz`, attached to the
+v1.0.2 release):
 
-    ed04f1b10cd84869fa056c6e25d5dc2e3a8d9a663a1b8fd6489dcf58bd4e7add
+    4ac50d664ca066588ec5122b1c1239eeb57a35405d8f9962d572b21b8892cdc6
 
 ## Validating the catalogue rows
 
@@ -56,9 +56,9 @@ v1.0.1 release):
 (row scope, unchanged distances, bound and candidate recomputation, hash
 formats, witness sizes, replica distinctness, and issuer-registry pinning):
 
-    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.1/ISSUERS.json
+    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.2/ISSUERS.json
 
-## Trust-root note (v1.0.1, 2026-07-30)
+## Trust-root note — v1.0.2 SUPERSEDES v1.0.1
 
 External review found the signature verifier **failed open**: an empty or
 malformed `ISSUERS.json` disabled issuer pinning entirely, so a self-signed
