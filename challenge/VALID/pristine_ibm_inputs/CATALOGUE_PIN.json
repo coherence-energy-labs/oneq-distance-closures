@@ -1,0 +1,10 @@
+{
+  "source": "qiskit-community/qcode-discovery",
+  "file": "results/campaign7_publication_merged.jsonl",
+  "rows": 368,
+  "unresolved_rows_d_is_exact_false": 117,
+  "content_digest": "cb33f1c825d504e99daaac5178758d5e3ddb476240178c6909b2ce5896512bde",
+  "pinned_digest": "cb33f1c825d504e99daaac5178758d5e3ddb476240178c6909b2ce5896512bde",
+  "matches_pin": true,
+  "note": "row-canonical digest: survives row reordering, detects any field change. Added after this programme verified against a catalogue it had edited itself."
+}

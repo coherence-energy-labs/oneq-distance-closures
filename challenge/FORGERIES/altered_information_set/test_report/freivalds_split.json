@@ -1,0 +1,11 @@
+{
+  "question": "Is the sweep's inner loop dominated by the GF(2) product (Freivalds-verifiable) or by popcount+threshold (not)?",
+  "why_it_matters": "LIMITATIONS.md states no succinct proof object exists for the lower bound. That verdict was given in one line, without measuring the split.",
+  "setup": "one real sweep block, n=108, depth=6, 2,985,984 candidates",
+  "linear_fraction": 0.492,
+  "nonlinear_fraction": 0.508,
+  "verdict": "SURVIVES, with the reasoning corrected. It is a dead heat, not a nonlinear-dominated loop. Freivalds can probabilistically certify the GF(2) product in O(n) per trial, but the popcount-and-threshold half -- the half that DECIDES whether a candidate undercuts the bound -- is not a linear operation and is not covered.",
+  "revised_number": "at best ~2x reduction in re-execution cost, not elimination",
+  "what_would_change_it": "an arithmetisation of popcount+threshold, or a decision procedure that pushes the comparison into the linear algebra",
+  "correction": "the original dismissal implied the nonlinear half dominated. It does not; the halves are equal. The conclusion holds for a different reason than the one given."
+}

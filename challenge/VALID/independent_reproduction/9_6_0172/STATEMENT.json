@@ -1,0 +1,32 @@
+{
+  "code_id": "9_6_0172",
+  "claimed_d": 10,
+  "independently_certified_d": 10,
+  "reproduces_full_claim": true,
+  "candidates_checked": 49256436180,
+  "shards": 582,
+  "violations": 0,
+  "lightest_logical_found": 10,
+  "deficiencies_recomputed": [
+    0,
+    4
+  ],
+  "bound_ladder_fixed_before_execution": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 6,
+    "5": 8,
+    "6": 10,
+    "7": 12
+  },
+  "seconds": 36314.8,
+  "runner_source_sha256": "fa53c1631da2f1a35ace4c4270b1f7b1fbc71eb882cb84372e75ba8869110240",
+  "imports_production_searcher": false,
+  "what_it_does_not_use": [
+    "certify_distance -- the production certification engine",
+    "the greedy planner: information sets are rebuilt from the recorded pivot qubits, whose reduced form is unique",
+    "the recorded deficiencies: recomputed from the pivot lists"
+  ],
+  "what_it_does_share": "the Zimmermann theorem itself, as any second implementation of the same mathematics must"
+}

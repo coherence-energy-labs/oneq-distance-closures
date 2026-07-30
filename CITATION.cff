@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "ONE-Q Distance Closures: certified exact distances for six PBB codes"
+message: "If you use these certificates, witnesses, or the verifier, cite this release."
+type: dataset
+authors:
+  - name: "Coherence Energy Labs"
+    website: "https://coherenceenergylabs.com"
+    email: "info@coherenceenergylabs.com"
+version: "1.0.1"
+date-released: "2026-07-30"
+repository-code: "https://github.com/coherence-energy-labs/oneq-distance-closures"
+keywords: [quantum-error-correction, code-distance, certified-computation, bivariate-bicycle-codes]
+license: Apache-2.0

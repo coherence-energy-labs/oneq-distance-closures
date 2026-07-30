@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "label": "SWAR popcount == true popcount, all 2**64",
+      "result": "PROVEN",
+      "seconds": 1.563
+    },
+    {
+      "label": "qweight_sym fold popcount(a|b), all 2**128",
+      "result": "PROVEN",
+      "seconds": 2.513
+    },
+    {
+      "label": "MUTANT mask m4 bit flipped",
+      "result": "REFUTED",
+      "counterexample": {
+        "x": "0x5fe500fc3f30b47f"
+      },
+      "seconds": 0.211
+    },
+    {
+      "label": "MUTANT final shift 56->55",
+      "result": "REFUTED",
+      "counterexample": {
+        "x": "0x5955111044404454"
+      },
+      "seconds": 0.023
+    },
+    {
+      "label": "MUTANT subtract -> add",
+      "result": "REFUTED",
+      "counterexample": {
+        "x": "0x7fb2a6f1f871077f"
+      },
+      "seconds": 0.054
+    }
+  ],
+  "equivalences_proven": 2,
+  "mutants_refuted": 3,
+  "gate_ok": true,
+  "why": "certificates were produced on GPU/SWAR and are re-verified on CPU/native; the two paths must agree on every input, and 6 end-to-end samples covered 2.7e-13 of the space",
+  "found_a_bug": false,
+  "what_changed": "the claim CLASS: sample -> theorem over 2**64"
+}

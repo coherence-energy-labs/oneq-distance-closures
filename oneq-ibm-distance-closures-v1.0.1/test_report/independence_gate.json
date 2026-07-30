@@ -1,0 +1,42 @@
+{
+  "rows": [
+    {
+      "file": "tools/independent_reproduction.py",
+      "claim": "certify_distance is not invoked; the information set is rebuilt from recorded pivots and the deficiencies recomputed",
+      "producer_symbols_imported": [
+        "_logical_masks",
+        "certified_bound_at_depth",
+        "certified_bound_per_set",
+        "rebuild_options",
+        "recompute_deficiencies",
+        "sweep_level",
+        "sym_layout"
+      ],
+      "forbidden_imports": [],
+      "undeclared_producer_imports": [],
+      "ok": true
+    },
+    {
+      "file": "tools/challenge_lower_bound.py",
+      "claim": "rebuilt from recorded pivots; certify_distance not invoked",
+      "producer_symbols_imported": [
+        "verify_levels"
+      ],
+      "forbidden_imports": [],
+      "undeclared_producer_imports": [],
+      "ok": true
+    },
+    {
+      "file": "tools/verify_closures.py",
+      "claim": "imports nothing from the search engines that produced the result -- only code reconstruction and GF(2) linear algebra",
+      "producer_symbols_imported": [],
+      "forbidden_imports": [],
+      "undeclared_producer_imports": [],
+      "ok": true
+    }
+  ],
+  "failures": 0,
+  "limitation": "token-level: catches drift and copy-paste, NOT a verifier that re-implements a producer routine under a new name",
+  "overclaim_control_refutations": 2,
+  "gate_has_teeth": true
+}

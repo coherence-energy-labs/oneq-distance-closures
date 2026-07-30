@@ -1,0 +1,159 @@
+{
+  "release": "oneq-ibm-distance-closures-v1.0.1",
+  "closures": 6,
+  "schema_version": "2.0.0",
+  "searcher_version": "2.0.0",
+  "verifier_version": "2.0.0",
+  "verifier_min_version": "2.0.0",
+  "catalogue_digest": "cb33f1c825d504e99daaac5178758d5e3ddb476240178c6909b2ce5896512bde",
+  "rows": [
+    {
+      "code_id": "9_6_0172",
+      "n": 108,
+      "k": 2,
+      "published_d": 10,
+      "published_is_exact": false,
+      "certified_d": 10,
+      "confirms_published_value": true,
+      "code_input_hash": "95a416506e3ac00961c78498e74621dd19c262ca6ae2ff4f6fc8589cc4d286b7",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_plus_independent_lower_bound_reproduction",
+      "lower_bound_independently_reproduced": true,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 108 --k 2 --replicas 2 --max-p 6"
+    },
+    {
+      "code_id": "0571f76786029653",
+      "n": 108,
+      "k": 2,
+      "published_d": 10,
+      "published_is_exact": false,
+      "certified_d": 10,
+      "confirms_published_value": true,
+      "code_input_hash": "ca31654d55e7fe9fa03003e854c0122acee9860c71ce5e61a9635bb6c45bbcf6",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_distinct_information_sets",
+      "lower_bound_independently_reproduced": false,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 108 --k 2 --replicas 2 --max-p 6"
+    },
+    {
+      "code_id": "phase2_64",
+      "n": 108,
+      "k": 6,
+      "published_d": 8,
+      "published_is_exact": false,
+      "certified_d": 8,
+      "confirms_published_value": true,
+      "code_input_hash": "f54c5128f30824459b8798abc19b39745b552acc8aff23cb18225bf350c92842",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_distinct_information_sets",
+      "lower_bound_independently_reproduced": false,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 108 --k 6 --replicas 2 --max-p 7"
+    },
+    {
+      "code_id": "phase2_65",
+      "n": 108,
+      "k": 6,
+      "published_d": 8,
+      "published_is_exact": false,
+      "certified_d": 8,
+      "confirms_published_value": true,
+      "code_input_hash": "5acaeac02707c9a5033c51bddb9fb6c7244b6646226a06098d1302487fcd4406",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_distinct_information_sets",
+      "lower_bound_independently_reproduced": false,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 108 --k 6 --replicas 2 --max-p 7"
+    },
+    {
+      "code_id": "12_6_0199",
+      "n": 144,
+      "k": 4,
+      "published_d": 12,
+      "published_is_exact": false,
+      "certified_d": 12,
+      "confirms_published_value": true,
+      "code_input_hash": "658d23d8d1748589af574392032a11b1248e3fc1e0d4a7cf147dd38be0be99e1",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_distinct_information_sets",
+      "lower_bound_independently_reproduced": false,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 144 --k 4 --replicas 2 --max-p 7"
+    },
+    {
+      "code_id": "12_6_0201",
+      "n": 144,
+      "k": 8,
+      "published_d": 8,
+      "published_is_exact": false,
+      "certified_d": 8,
+      "confirms_published_value": true,
+      "code_input_hash": "e61a9e67e0309d6593bfb49afd688204e48061a977e348b0eb4f87d7dbb2825d",
+      "replica_information_sets_distinct": true,
+      "independence_level": "two_replicas_distinct_information_sets",
+      "lower_bound_independently_reproduced": false,
+      "lower_bound_is_machine_checkable": false,
+      "verifier_min_version": "2.0.0",
+      "rerun_command": "python experiments/gate0b_ibm825/close_open_instances.py --n 144 --k 8 --replicas 2 --max-p 7"
+    }
+  ],
+  "evidence_ladder": [
+    {
+      "claim": "the code is the one IBM published",
+      "checkable": "rebuild from the catalogue row; stabilizers commute and k matches",
+      "cost": "milliseconds",
+      "requires_trust_in_us": false
+    },
+    {
+      "claim": "d <= d*  (upper bound)",
+      "checkable": "the witness operator: commutes with every stabilizer, is not in S, and weighs exactly d*",
+      "cost": "milliseconds",
+      "requires_trust_in_us": false
+    },
+    {
+      "claim": "the candidate accounting is honest",
+      "checkable": "SUM_i SUM_q C(Kq_i,q)*3^q from three integers per set",
+      "cost": "microseconds",
+      "requires_trust_in_us": false
+    },
+    {
+      "claim": "the two replicas searched differently",
+      "checkable": "their information-set hashes differ, and each is reconstructible from its recorded seed",
+      "cost": "minutes",
+      "requires_trust_in_us": false
+    },
+    {
+      "claim": "no light operator at low depth",
+      "checkable": "levels 1..L enumerated ENTIRELY by index, sharing no code with the sweep",
+      "cost": "seconds to minutes",
+      "requires_trust_in_us": false
+    },
+    {
+      "claim": "d >= d*  (lower bound, full)",
+      "checkable": "re-execution of the enumeration; the space is partitioned into independently checkable ranges so this is shardable",
+      "cost": "hours, divisible",
+      "requires_trust_in_us": false,
+      "note": "NOT machine-checkable from the artifact alone. There is no succinct proof object. Delsarte/LP cannot supply one: any such bound bounds N(S) as a linear code, and N(S) contains stabilizers lighter than the distance."
+    }
+  ],
+  "independence_levels": {
+    "two_replicas_distinct_information_sets": [
+      "0571f76786029653",
+      "12_6_0199",
+      "12_6_0201",
+      "phase2_64",
+      "phase2_65"
+    ],
+    "two_replicas_plus_independent_lower_bound_reproduction": [
+      "9_6_0172"
+    ]
+  },
+  "lower_bound_is_machine_checkable": false
+}

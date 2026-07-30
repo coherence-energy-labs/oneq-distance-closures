@@ -1,0 +1,132 @@
+{
+  "ell": 12,
+  "m": 6,
+  "A_terms": [
+    [
+      2,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ]
+  ],
+  "B_terms": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      11,
+      4
+    ]
+  ],
+  "C_terms": [
+    [
+      1,
+      1
+    ],
+    [
+      6,
+      4
+    ]
+  ],
+  "D_terms": [
+    [
+      2,
+      0
+    ],
+    [
+      9,
+      3
+    ]
+  ],
+  "n": 144,
+  "k": 4,
+  "d": 12,
+  "fom": 4.0,
+  "d_method": "deep_milp",
+  "d_milp": 12,
+  "d_bposd": 16,
+  "milp_exact": false,
+  "timestamp": 1773323406.2488904,
+  "bliss_hash": "7989eece4ce9c3cd",
+  "bliss_group_size": 1,
+  "code_id": "12_6_0199",
+  "verified_at": "2026-03-12T23:49:04.595216+00:00",
+  "d_is_exact": false,
+  "d_over_sqrtn": 1.0,
+  "trust_level": "TRUSTED",
+  "time_s": 662.7,
+  "lc_hadamard": false,
+  "lc_uniform": false,
+  "lc_uniform_s1": null,
+  "lc_uniform_s2": null,
+  "lc_nonuniform_IS_HS": true,
+  "lc_uniform_solutions": [],
+  "lc_any": false,
+  "d_milp_initial": 16,
+  "d_is_upper_bound": true,
+  "publication_quality": false,
+  "d_deep_milp": 12,
+  "d_original": 12,
+  "fom_deep": 4.0,
+  "milp_exact_deep": false,
+  "per_logical": [
+    {
+      "w": 12,
+      "opt": true,
+      "t": 1796.3
+    },
+    {
+      "w": 12,
+      "opt": true,
+      "t": 2041.2
+    },
+    {
+      "w": 12,
+      "opt": false,
+      "t": 3600.1
+    },
+    {
+      "w": 12,
+      "opt": false,
+      "t": 3600.0
+    },
+    {
+      "w": 16,
+      "opt": false,
+      "t": 3600.1
+    },
+    {
+      "w": 23,
+      "opt": false,
+      "t": 3600.1
+    },
+    {
+      "w": 12,
+      "opt": true,
+      "t": 2715.3
+    },
+    {
+      "w": 12,
+      "opt": true,
+      "t": 2233.4
+    }
+  ],
+  "logicals_optimal": 4,
+  "logicals_incumbent": 4,
+  "logicals_failed": 0,
+  "total_logicals": 8,
+  "deep_milp_time_s": 19341.9,
+  "timeout_per_logical": 3600,
+  "deep_verified_at": "2026-05-29T17:29:44.277834+00:00"
+}

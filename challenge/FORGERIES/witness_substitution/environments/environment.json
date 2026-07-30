@@ -1,0 +1,7 @@
+{
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.3.5",
+  "git_head": "f0b300bf237d648ad969ed3041e42f81fba1e7a9",
+  "gpu": "NVIDIA RTX 5080 via cupy; the numpy CPU path is byte-identical at equal completed depth (see test_report/kernel_equivalence.json)"
+}

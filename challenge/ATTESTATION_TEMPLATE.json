@@ -1,0 +1,16 @@
+{
+  "verifier": {
+    "name_or_handle": "",
+    "independent_of_project": true,
+    "operating_system": "",
+    "machine": "",
+    "release_hash": "<sha256 of VALID/ tree as received>",
+    "verifier_hash": "<sha256 of the verify script you ran>",
+    "valid_bundle_accepted": null,
+    "all_forged_bundles_rejected": null,
+    "stdout_hash": "<sha256 of your unedited log>",
+    "ambiguous_instructions_found": [],
+    "signed_at": "<ISO-8601>",
+    "signature": "<any key you control; publish the pubkey>"
+  }
+}

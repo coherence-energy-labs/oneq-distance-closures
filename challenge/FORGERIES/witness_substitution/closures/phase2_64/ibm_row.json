@@ -1,0 +1,163 @@
+{
+  "ell": 9,
+  "m": 6,
+  "A_terms": [
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      5,
+      4
+    ]
+  ],
+  "B_terms": [
+    [
+      1,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      5,
+      5
+    ]
+  ],
+  "C_terms": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      6,
+      2
+    ]
+  ],
+  "D_terms": [
+    [
+      8,
+      5
+    ]
+  ],
+  "n": 108,
+  "k": 6,
+  "d": 8,
+  "fom": 3.5556,
+  "d_method": "deep_milp",
+  "d_milp": 8,
+  "d_bposd": 8,
+  "milp_exact": false,
+  "timestamp": 1773320939.3028934,
+  "bliss_hash": "d8f7c04aec559961",
+  "bliss_group_size": 1,
+  "code_id": "phase2_64",
+  "verified_at": "2026-05-20T23:40:42.213246+00:00",
+  "d_is_exact": false,
+  "d_is_upper_bound": true,
+  "d_bposd_runs": [
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "bposd_spread": 0,
+  "milp_solved": 1,
+  "milp_total_logicals": 12,
+  "milp_budget": "300s/logical, 1800s total",
+  "d_over_sqrtn": 0.77,
+  "trust_level": "TRUSTED",
+  "time_s": 325.5,
+  "publication_quality": false,
+  "lc_hadamard": false,
+  "lc_uniform": false,
+  "lc_uniform_s1": null,
+  "lc_uniform_s2": null,
+  "lc_nonuniform_IS_HS": true,
+  "lc_uniform_solutions": [],
+  "lc_any": false,
+  "d_milp_initial": 16,
+  "d_deep_milp": 8,
+  "d_original": 8,
+  "fom_deep": 3.5556,
+  "milp_exact_deep": false,
+  "per_logical": [
+    {
+      "w": 16,
+      "opt": false,
+      "t": 3600.1
+    },
+    {
+      "w": 16,
+      "opt": false,
+      "t": 3600.1
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 68.9
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 69.3
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 219.0
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 145.3
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 101.4
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 108.8
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 206.8
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 102.6
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 85.9
+    },
+    {
+      "w": 8,
+      "opt": true,
+      "t": 128.3
+    }
+  ],
+  "logicals_optimal": 10,
+  "logicals_incumbent": 2,
+  "logicals_failed": 0,
+  "total_logicals": 12,
+  "deep_milp_time_s": 4074.0,
+  "timeout_per_logical": 3600,
+  "deep_verified_at": "2026-05-29T13:15:16.445407+00:00"
+}
