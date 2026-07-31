@@ -18,6 +18,20 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install -r oneq-ibm-distance-closures-v1.0.3/REQUIREMENTS.txt
 
+      - name: pin files are bare hex + LF (three CR bugs deep)
+        run: |
+          for f in PIN_ARCHIVE.txt challenge/RELEASE_PIN.txt; do
+            python - "$f" <<'PY'
+          import re, sys, pathlib
+          b = pathlib.Path(sys.argv[1]).read_bytes()
+          assert b.endswith(b"
+") and b"" not in b, f"{sys.argv[1]}: CR or missing LF"
+          assert re.fullmatch(rb"[0-9a-f]{64}
+", b), f"{sys.argv[1]}: not 64 hex + LF"
+          print(f"{sys.argv[1]} OK")
+          PY
+          done
+
       - name: manifest -- every file matches SHA256SUMS
         run: cd oneq-ibm-distance-closures-v1.0.3 && sha256sum -c SHA256SUMS
 
