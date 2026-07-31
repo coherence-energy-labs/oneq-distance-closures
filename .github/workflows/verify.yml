@@ -18,13 +18,13 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install -r oneq-ibm-distance-closures-v1.0.3/REQUIREMENTS.txt
 
-      - name: pin files are bare hex + LF (three CR bugs deep)
+      - name: pin files are exactly 64 hex + LF (four CR bugs deep)
         run: |
           for f in PIN_ARCHIVE.txt challenge/RELEASE_PIN.txt; do
-            if grep -q $'' "$f"; then echo "$f contains CR"; exit 1; fi
-            if ! grep -qE '^[0-9a-f]{64}$' "$f"; then echo "$f is not 64 hex"; exit 1; fi
-            if [ "$(wc -l < "$f")" != "1" ]; then echo "$f is not exactly one LF line"; exit 1; fi
-            echo "$f OK"
+            sz=$(wc -c < "$f")
+            if [ "$sz" -ne 65 ]; then echo "$f is $sz bytes, want 65 (64 hex + LF; CRLF would be 66)"; exit 1; fi
+            if ! grep -qE '^[0-9a-f]{64}$' "$f"; then echo "$f is not 64 lowercase hex"; exit 1; fi
+            echo "$f OK (65 bytes, bare hex)"
           done
 
       - name: manifest -- every file matches SHA256SUMS
