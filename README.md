@@ -6,7 +6,7 @@ qcode-discovery catalogue. Companion to
 
 ## Verify in one command (~2 minutes, Python 3.10+, numpy and cryptography)
 
-    cd oneq-ibm-distance-closures-v1.0.3
+    cd oneq-ibm-distance-closures-v1.0.4
     PYTHONPATH=. python verifiers/verify_closures.py
 
 Expected: `6/6 closures fully re-verified ... 6/6 PROMOTABLE`.
@@ -42,13 +42,13 @@ succinctly machine-checkable — see `LIMITATIONS.md` in the bundle. One closure
 * **Evidence** (certificates, witnesses, reports): **CC-BY-4.0** — reuse
   freely **with attribution** to Coherence Energy Labs.
 * Certificates are Ed25519-signed; issuer public keys are pinned in
-  `oneq-ibm-distance-closures-v1.0.3/ISSUERS.json`. A signature proves
+  `oneq-ibm-distance-closures-v1.0.4/ISSUERS.json`. A signature proves
   authorship; the archive SHA-256 below proves integrity.
 
-Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.3.tar.gz`, attached to the
-v1.0.3 release):
+Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.4.tar.gz`, attached to the
+v1.0.4 release):
 
-    fac4b1d197776af948cbae8f3024d907200e08b74d8392866786ae2aac93644d
+    94b455ead48b8daec015ad3913730e0c0eba66b50004a96ed9f5b1b8bc97e820
 
 ## Validating the catalogue rows
 
@@ -56,7 +56,7 @@ v1.0.3 release):
 (row scope, unchanged distances, bound and candidate recomputation, hash
 formats, witness sizes, replica distinctness, and issuer-registry pinning):
 
-    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.3/ISSUERS.json
+    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.4/ISSUERS.json
 
 ## Trust-root note — v1.0.2 SUPERSEDES v1.0.1
 
@@ -72,7 +72,7 @@ Cite via `CITATION.cff`.
 
 ## Integrity, and how it was broken before
 
-    cd oneq-ibm-distance-closures-v1.0.3 && sha256sum -c SHA256SUMS   # 58/58 OK
+    cd oneq-ibm-distance-closures-v1.0.4 && sha256sum -c SHA256SUMS   # 58/58 OK
 
 v1.0.0 through v1.0.2 each shipped an artifact that did not match its own
 description: a crash on other machines, then directory/archive drift, then a

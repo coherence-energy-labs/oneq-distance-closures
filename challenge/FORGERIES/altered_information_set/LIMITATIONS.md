@@ -70,3 +70,17 @@ correct active key, and the published registry lists it as active. What
 changed is the verifier's behaviour under a damaged trust registry.
 
 v1.0.1 remains downloadable for provenance, and should not be used to verify.
+
+## v1.0.4 supersedes v1.0.3 — asset immutability, enforced
+
+v1.0.3's tag was correct but its ASSET was rebuilt three times as CI caught
+successive defects (8df0c8a6 -> 0bc75a29 -> fac4b1d1). The first build had
+already been referenced externally by a catalogue pin, so replacing it in place
+broke this project's own rule -- "an immutable release is superseded, never
+edited" -- quoted verbatim in the commit that broke it. A maintainer verifying
+the pinned hash would have downloaded bytes that no longer existed anywhere.
+
+v1.0.4 is uploaded exactly ONCE, after CI is green, and its hash is compared to
+the catalogue rows by `validate_pr_rows.py` -- a check that did not exist
+before, which is precisely why 103/103 could pass while the pin pointed at
+vanished bytes. The certificates are unchanged and have never changed.

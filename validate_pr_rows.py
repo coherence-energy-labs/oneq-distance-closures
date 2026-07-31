@@ -18,6 +18,9 @@ CLONE = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(".")
 F = "results/campaign7_publication_merged.jsonl"
 REL_ISSUERS = (pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else
                pathlib.Path("release/oneq-ibm-distance-closures-v1.0.3/ISSUERS.json"))
+PUBLISHED_PIN = (pathlib.Path(sys.argv[3]).read_text(encoding="utf-8").strip()
+                 if len(sys.argv) > 3 else "")
+
 SIX_KEYS = {"9_6_0172", "phase2_64", "phase2_65", "12_6_0199", "12_6_0201",
             "bliss:0571f76786029653"}
 
@@ -90,6 +93,21 @@ for r in changed:
     for h in ("code_input_hash", "witness_hash", "artifact_sha256"):
         v = src.get(h) or ""
         check(f"{k}: {h} is 64-hex", bool(re.fullmatch(r"[0-9a-f]{64}", v)))
+    # THE CHECK WHOSE ABSENCE LET 103/103 PASS WHILE PINNING VANISHED BYTES.
+    # artifact_sha256 was only ever checked for HEX SHAPE, never against the
+    # pin of the release actually published -- so when the v1.0.3 asset was
+    # rebuilt under its own tag (three times, violating "superseded, never
+    # edited"), every row kept pointing at bytes that no longer existed
+    # anywhere public, and the validator reported all green. A validator tests
+    # only what it is told to test; this closes the class.
+    check(f"{k}: artifact_sha256 == the PUBLISHED archive pin",
+          src.get("artifact_sha256") == PUBLISHED_PIN,
+          f"row {str(src.get('artifact_sha256'))[:16]}... vs published "
+          f"{PUBLISHED_PIN[:16]}...")
+    check(f"{k}: artifact_url names the same version as release",
+          str(src.get("release", "")).endswith(
+              str(src.get("artifact_url", "")).rsplit("/", 1)[-1]),
+          f"{src.get('release')} vs {str(src.get('artifact_url','')).rsplit('/',1)[-1]}")
     check(f"{k}: exactness timestamp present", bool(src.get("exactness_verified_at")))
     ws = src.get("witness_support")
     check(f"{k}: witness support INLINE and |support| == d",
