@@ -283,7 +283,13 @@ def verify_instance(rec: dict, cat: dict) -> dict:
                 row["witness_note"] = (
                     f"FORGED OR MALFORMED WITNESS -- refused: {type(exc).__name__}: "
                     f"{exc}. Expected [qubit_index, pauli_code] pairs.")
-                replicas.append(row)
+                # `checks["replicas"]`, not a bare name: the first version of
+                # this handler wrote `replicas.append(row)` and raised
+                # NameError -- turning the crash-instead-of-verdict bug into a
+                # DIFFERENT crash, one step later. Three fresh clones missed
+                # it because the VALID bundle never enters this branch; CI on
+                # a machine that authored nothing caught it on the first run.
+                checks["replicas"].append(row)
                 continue
             commutes = not ((code.Hx @ v[n:] + code.Hz @ v[:n]) % 2).any()
             in_stab = gf2_rank(np.vstack([H, v])) == rankH
