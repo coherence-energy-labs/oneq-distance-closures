@@ -1,0 +1,44 @@
+name: integrity
+
+# THE STRUCTURAL FIX. Three consecutive releases shipped an artifact that did
+# not match its own description, and every one was caught by a human -- twice
+# by an external reviewer -- because the only validation ran on the machine
+# where the artifact was authored. This job runs on a machine that authored
+# nothing: clean clone, manifest, challenge, and a diff of the repo copy
+# against the extracted release archive. It would have caught all of them.
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -r oneq-ibm-distance-closures-v1.0.3/REQUIREMENTS.txt
+
+      - name: manifest -- every file matches SHA256SUMS
+        run: cd oneq-ibm-distance-closures-v1.0.3 && sha256sum -c SHA256SUMS
+
+      - name: verifier -- 6/6 PROMOTABLE from a clean checkout
+        run: |
+          cd oneq-ibm-distance-closures-v1.0.3
+          PYTHONPATH=. python verifiers/verify_closures.py | tee /tmp/v.txt
+          grep -q "6/6 PROMOTABLE" /tmp/v.txt
+
+      - name: challenge -- VALID accepted, all seven forgeries rejected
+        run: cd challenge && bash verify.sh
+
+      - name: tree pin -- matches the published PIN
+        run: |
+          cd challenge
+          grep -q "$(cat RELEASE_PIN.txt)" verification_report.json
+
+      - name: archive parity -- repo copy == published release bytes
+        run: |
+          V=oneq-ibm-distance-closures-v1.0.3
+          curl -sL -o a.tgz "https://github.com/coherence-energy-labs/oneq-distance-closures/releases/download/v1.0.3/$V.tar.gz" || exit 0
+          echo "$(cat PIN_ARCHIVE.txt)  a.tgz" | sha256sum -c -
+          mkdir x && tar xzf a.tgz -C x
+          diff -r "$V" "x/$V" && echo "repo copy and published archive are identical"
