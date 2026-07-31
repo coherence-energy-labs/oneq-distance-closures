@@ -26,7 +26,7 @@ function Tree-Hash($dir) {
     return ([BitConverter]::ToString($sha) -replace "-", "").ToLower()
 }
 $report = [ordered]@{}
-$pin = if ($env:PIN) { $env:PIN } elseif (Test-Path RELEASE_PIN.txt) { (Get-Content RELEASE_PIN.txt -Raw).Trim() } else { "" }
+$pin = ((if ($env:PIN) { $env:PIN } elseif (Test-Path RELEASE_PIN.txt) { Get-Content RELEASE_PIN.txt -Raw } else { "" }) -replace "[^0-9a-f]", "")
 Write-Output "=== VALID bundle (must ACCEPT: verifier output AND tree hash == pin) ==="
 $vOut = Run-Bundle (Resolve-Path VALID)
 $th = Tree-Hash (Resolve-Path VALID)

@@ -21,7 +21,7 @@ tree_hash() {
 ok=1
 # The pin's AUTHORITY is the public post; the local file is a convenience.
 # A stranger overrides it:  PIN=<published-hash> ./verify.sh
-pin="${PIN:-$(cat RELEASE_PIN.txt 2>/dev/null)}"
+pin=$(printf "%s" "${PIN:-$(cat RELEASE_PIN.txt 2>/dev/null)}" | tr -cd "0-9a-f")
 echo "=== VALID bundle (must ACCEPT: verifier output AND tree hash == pin) ==="
 th=$(tree_hash VALID)
 if run_bundle VALID && [ -n "$pin" ] && [ "$th" = "$pin" ]; then v=true; else v=false; ok=0; fi
