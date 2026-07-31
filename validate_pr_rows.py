@@ -21,6 +21,8 @@ REL_ISSUERS = (pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else
 PUBLISHED_PIN = (pathlib.Path(sys.argv[3]).read_text(encoding="utf-8").strip()
                  if len(sys.argv) > 3 else "")
 
+EXPECTED_RELEASE = REL_ISSUERS.parent.name
+
 SIX_KEYS = {"9_6_0172", "phase2_64", "phase2_65", "12_6_0199", "12_6_0201",
             "bliss:0571f76786029653"}
 
@@ -70,9 +72,13 @@ for r in changed:
     check(f"{k}: flags coherent", r.get("d_is_exact") is True
           and r.get("trust_level") == "EXACT"
           and r.get("d_is_upper_bound") is False)
-    check(f"{k}: release not revoked",
-          src.get("release") == "oneq-ibm-distance-closures-v1.0.3",
-          src.get("release", "?"))
+    # The expected release is DERIVED from the ISSUERS.json path the caller
+    # passed, not hardcoded -- a hardcoded version string in the validator is
+    # the same drift the validator exists to catch, and it fired here the
+    # moment v1.0.4 superseded v1.0.3.
+    check(f"{k}: release matches the bundle being validated",
+          src.get("release") == EXPECTED_RELEASE,
+          f"{src.get('release')} vs {EXPECTED_RELEASE}")
     # bound recomputes from depth + deficiencies
     p = src.get("depth_swept_p")
     contribs = [s.get("contribution") for s in src.get("sets", [])]
