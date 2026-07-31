@@ -1,0 +1,8 @@
+# NO line-ending conversion, anywhere, ever.
+#
+# Three releases in a row shipped a tree-hash pin that no clean clone could
+# reproduce: the pin was computed over CRLF bytes on the authoring machine,
+# git converted them to LF at commit, and a Windows clone with autocrlf
+# produced a third value. 57 of 57 files failed their own SHA256SUMS on a
+# fresh clone. A hash pin is a promise about BYTES; git must not rewrite them.
+* -text

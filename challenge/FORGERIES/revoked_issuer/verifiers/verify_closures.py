@@ -34,6 +34,7 @@ import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
 
+from oneq.passport import digest_obj                            # noqa: E402
 from oneq.bz import witness_from_support                        # noqa: E402
 from oneq.gbb import build_pbb, gf2_rank, symplectic_weight     # noqa: E402
 from oneq.provenance import (VERIFIER_MIN_VERSION,              # noqa: E402
@@ -265,8 +266,25 @@ def verify_instance(rec: dict, cat: dict) -> dict:
             row["witness_checkable"] = False
             row["witness_note"] = "no witness in the artifact -- upper bound NOT checkable here"
         else:
-            v = witness_from_support(sup, n)
-            wt = int(symplectic_weight(v, n))
+            # MALFORMED WITNESS = a REFUSAL, never a traceback. The
+            # witness_substitution forgery fed a bare int list where
+            # [qubit, pauli] pairs belong, and this line raised
+            # "cannot unpack non-iterable int object". The exit code happened
+            # to be non-zero so the challenge scored it rejected -- but a
+            # crash is not a verdict: it is indistinguishable from the
+            # verifier being broken, and a reviewer watching a traceback
+            # learns nothing about whether the check works.
+            try:
+                v = witness_from_support(sup, n)
+                wt = int(symplectic_weight(v, n))
+            except Exception as exc:
+                row["witness_checkable"] = False
+                row["witness_proves_upper_bound"] = False
+                row["witness_note"] = (
+                    f"FORGED OR MALFORMED WITNESS -- refused: {type(exc).__name__}: "
+                    f"{exc}. Expected [qubit_index, pauli_code] pairs.")
+                replicas.append(row)
+                continue
             commutes = not ((code.Hx @ v[n:] + code.Hz @ v[:n]) % 2).any()
             in_stab = gf2_rank(np.vstack([H, v])) == rankH
             row.update({"witness_checkable": True, "witness_weight": wt,
@@ -306,16 +324,190 @@ def verify_instance(rec: dict, cat: dict) -> dict:
     return checks
 
 
+RECORD_ORIGINS: dict[str, str] = {}
+
+
+def replica_distinctness(certs) -> str:
+    r"""'distinct' | 'duplicate' | 'indeterminate' -- and the third is the point.
+
+    THE FALSE FINDING THIS EXISTS TO PREVENT. The first version of this check
+    hashed each certificate's `sets` and called any collision a duplicated run.
+    It reported 12_6_0199 as "one run recorded twice", which was wrong: that
+    record's pivot lists were EMPTY, because it predates the schema that
+    captures them, and two empty lists hash alike for the trivial reason. The
+    detector had converted ABSENCE OF EVIDENCE into EVIDENCE OF DUPLICATION, and
+    the conclusion was written down twice -- once as a soundness finding, once
+    as a compute decision -- before anyone opened the artifact.
+
+    A hash over data that is not there is not a fingerprint. So duplication is
+    only asserted when the pivots are actually present and identical; when they
+    are missing the answer is 'indeterminate', which still withholds promotion
+    (distinctness unproven is distinctness not established) but does not accuse
+    the record of something it merely fails to record.
+    """
+    certs = list(certs or [])
+    if not certs:
+        return "indeterminate"
+    present = all(any(st.get("pivot_list") for st in (c.get("sets") or []))
+                  for c in certs)
+    collide = len({digest_obj(c.get("sets")) for c in certs}) < len(certs)
+    if not collide:
+        return "distinct"
+    if not present:
+        return "indeterminate"
+    return "duplicate"
+
+
+def score_records(records, cat, pinned: bool = True) -> dict:
+    r"""THE ONE scoring function. Both the headline and the doc gate call it.
+
+    WHY IT EXISTS. The status prose said "6/6 PROMOTABLE" for several sessions
+    while this verifier said 5/6. When a doc-claims gate was built to catch that
+    class, the gate REIMPLEMENTED the counting -- and immediately disagreed with
+    the headline in three different ways: it read result keys that do not exist
+    (0 closures), scoped closures by `improves_published` (0 again, because these
+    closures confirm the published value and prove it EXACT rather than raising
+    it), and then counted 7 records against a headline of 6.
+
+    Every one of those was a re-derivation of a rule that already existed here.
+    Two independent implementations of a count are two counts, and the gate
+    against drifting numbers cannot itself be a source of drift. So the scope
+    lives in exactly one place and both readers import it.
+
+    SCOPE, stated rather than assumed: a closure is a record whose status is
+    CLOSED or IMPROVED. Re-verified means the code rebuilds, replicas agree, the
+    bookkeeping is supported by the swept depth, and the witness proves the upper
+    bound. Promotable adds schema >= the floor, recomputed matching hashes, a
+    valid signature, provably distinct replica information sets, and a pinned
+    catalogue -- promotion is withheld when the INPUT cannot be identified.
+    """
+    rows, total, ok, promotable = [], 0, 0, 0
+    for rec in records:
+        if rec.get("status") not in ("CLOSED", "IMPROVED"):
+            continue
+        total += 1
+        v = verify_instance(rec, cat)
+        reps = v["replicas"]
+        wit_ok = all(x.get("witness_proves_upper_bound") for x in reps)
+        arith_ok = all(x["bound_supported_by_depth"] and
+                       x["all_contributors_fully_swept"] for x in reps)
+        good = v["code_rebuilds"] and v["replicas_agree"] and arith_ok
+        is_ok = bool(good and wit_ok)
+        prom = bool(is_ok and v["all_replicas_promotable"]
+                    and v["replica_information_sets_distinct"] and pinned)
+        ok += is_ok
+        promotable += prom
+        # A REPLICA SET WITH COLLIDING INFORMATION SETS IS NOT N REPLICAS.
+        # Two identical runs agreeing is one run counted twice, so
+        # `replicas_agree` over it is a tautology rather than evidence. Recorded
+        # per code because it is invisible in the aggregate: the count says
+        # "replicas agree" either way.
+        # DUPLICATION AND ABSENCE ARE DIFFERENT FINDINGS.
+        #
+        # The first version of this detector hashed `sets` and called any
+        # collision a tautology. It then reported 12_6_0199 as "one run recorded
+        # twice" -- which was false. That record's pivot lists were EMPTY,
+        # because it predates the schema that captures them, and two empty lists
+        # hash identically for the trivial reason. The detector had turned
+        # absence of evidence into evidence of duplication, and it was believed
+        # twice in writing before the artifact was read.
+        #
+        # A hash over data that is not there is not a fingerprint. So the
+        # detector now requires the pivots to BE THERE before it will call a
+        # collision duplication, and says "cannot tell" otherwise -- which is
+        # the honest verdict, and still refuses promotion, because distinctness
+        # unproven is distinctness not established.
+        certs = rec.get("certificates") or []
+        verdict = replica_distinctness(certs)
+        hs = {digest_obj(c.get("sets")) for c in certs}
+        rows.append({"code_id": rec.get("code_id", ""), "verdict": v,
+                     "witness_ok": wit_ok, "arithmetic_ok": arith_ok,
+                     "reverified": is_ok, "promotable": prom,
+                     "certificates": len(certs), "distinct_runs": len(hs),
+                     "replica_distinctness": verdict,
+                     "replica_set_is_tautological": verdict == "duplicate",
+                     "distinctness_indeterminate": verdict == "indeterminate"})
+    return {"total": total, "reverified": ok, "promotable": promotable,
+            "rows": rows,
+            "tautological_replica_sets":
+                [{"code_id": r["code_id"], "certificates": r["certificates"],
+                  "distinct_runs": r["distinct_runs"]}
+                 for r in rows if r["replica_set_is_tautological"]],
+            "indeterminate_distinctness":
+                [{"code_id": r["code_id"], "certificates": r["certificates"],
+                  "why": "certificates carry no pivot lists, so identical set "
+                         "hashes prove nothing either way -- this record cannot "
+                         "establish distinctness, and a better copy may exist"}
+                 for r in rows if r["distinctness_indeterminate"]]}
+
+
 def _records():
     """Closure records, from the repo's closed_*.json OR a self-contained
     bundle's certificates/ folder -- so this same script runs unmodified whether
     a reviewer has the whole repo or only the reproduction bundle."""
     here = pathlib.Path(__file__).resolve().parent
-    repo = sorted((here.parent / "experiments" / "gate0b_ibm825").glob("closed_*.json"))
-    if repo:
-        for f in repo:
-            for rec in json.loads(f.read_text(encoding="utf-8")):
-                yield rec
+    # PREFER THE RECORD THAT CARRIES ITS PROVENANCE, not the one found first.
+    #
+    # THE DEFECT THIS FIXES, and it cost two wrong public statements. The repo's
+    # working-tree records were preferred unconditionally over the release
+    # bundle. For 12_6_0199 the working-tree copy predates the 2.0.0 schema: its
+    # `pivot_list` fields are EMPTY. So the verifier read the weaker of two
+    # available artifacts, could not see the replica information sets, and
+    # correctly refused to promote what it could not see -- while the complete,
+    # signed copy sat in release/ carrying two provably distinct replicas.
+    #
+    # The verdict was sound; the input selection was not. A verifier that
+    # silently reaches for the weakest copy on hand manufactures its own
+    # negative findings, and a negative finding is still a finding: it was
+    # reported as "one run recorded twice" and as a compute decision, when the
+    # compute had already been done and the record had merely lost the data.
+    #
+    # Precedence is now by EVIDENCE CONTENT rather than by location: among the
+    # copies of a code_id, take the one whose certificates actually carry
+    # provenance and pivot lists. Ties keep the working tree, so ordinary
+    # development is unaffected.
+    def _score(rec) -> tuple:
+        certs = rec.get("certificates") or []
+        # A SIGNATURE IS EVIDENCE AND MUST RANK. Without it the two frozen
+        # releases scored equal on provenance and pivots, so the tie fell to
+        # sorted order and v1.0.0 -- the UNSIGNED one -- beat v1.0.1. The
+        # verifier then read a complete but unsigned copy and refused promotion
+        # for want of a signature that existed one directory away. Ranking by
+        # partial evidence and tie-breaking by filename is how a stronger
+        # artifact loses to a weaker one with a lower version number.
+        sig = sum(1 for c in certs if c.get("signature"))
+        prov = sum(1 for c in certs if c.get("provenance"))
+        piv = sum(1 for c in certs
+                  for sset in (c.get("sets") or []) if sset.get("pivot_list"))
+        return (sig, prov, piv, len(certs))
+
+    pools: dict[str, tuple] = {}
+    order: list[str] = []
+
+    def _offer(rec, origin: str) -> None:
+        cid = rec.get("code_id", "")
+        cand = (_score(rec), origin, rec)
+        if cid not in pools:
+            pools[cid] = cand
+            order.append(cid)
+        elif cand[0] > pools[cid][0]:
+            pools[cid] = cand
+
+    for f in sorted((here.parent / "experiments" / "gate0b_ibm825")
+                    .glob("closed_*.json")):
+        for rec in json.loads(f.read_text(encoding="utf-8")):
+            _offer(rec, "working-tree")
+    for rel in sorted((here.parent / "release").glob(
+            "*/closures/*/certificates.json")):
+        _offer(json.loads(rel.read_text(encoding="utf-8")), "release-bundle")
+    if pools:
+        chosen = {}
+        for cid in order:
+            sc, origin, rec = pools[cid]
+            chosen[cid] = origin
+            yield rec
+        RECORD_ORIGINS.clear()
+        RECORD_ORIGINS.update(chosen)
         return
     # Look beside the script AND one level up: in a frozen release the
     # verifier sits in verifier/ while the certificates sit at the bundle root.
@@ -416,20 +608,25 @@ def main() -> int:
               "  ! revision. Re-verification remains meaningful; PROMOTION is\n"
               "  ! withheld until the input is identified.")
     print()
+    # DELEGATED to score_records so the headline and the doc-claims gate cannot
+    # diverge. This block used to compute the counts inline; a second
+    # implementation elsewhere immediately disagreed with it three ways.
+    scored = score_records(records, cat, pinned)
+    # SAY WHICH COPY WAS READ. The verifier used to pick the first artifact it
+    # found and never mention it, so reading a stale record looked exactly like
+    # reading the good one -- the verdict differed, the provenance did not.
+    off = {k: v for k, v in RECORD_ORIGINS.items() if v != "working-tree"}
+    if off:
+        for k, v in sorted(off.items()):
+            print(f"  * {k}: read from the {v} -- it carries stronger evidence "
+                  f"(signature / provenance / pivots) than the working-tree copy")
+        print()
+    total, ok, promotable = scored["total"], scored["reverified"], scored["promotable"]
     if True:
-        for rec in records:
-            if rec["status"] not in ("CLOSED", "IMPROVED"):
-                continue
-            total += 1
-            v = verify_instance(rec, cat)
-            wit_ok = all(x.get("witness_proves_upper_bound") for x in v["replicas"])
-            arith_ok = all(x["bound_supported_by_depth"] and
-                           x["all_contributors_fully_swept"] for x in v["replicas"])
-            good = v["code_rebuilds"] and v["replicas_agree"] and arith_ok
-            ok += bool(good and wit_ok)
-            prom = bool(good and wit_ok and v["all_replicas_promotable"]
-                        and v["replica_information_sets_distinct"] and pinned)
-            promotable += prom
+        for _row in scored["rows"]:
+            rec = {"code_id": _row["code_id"]}
+            v = _row["verdict"]
+            wit_ok, arith_ok, prom = _row["witness_ok"], _row["arithmetic_ok"], _row["promotable"]
             print(f"{rec['code_id']:20s} published d<={v['published_d']} exact={v['published_is_exact']} "
                   f"-> claimed d={v['replicas'][0]['claimed_d']} | rebuild={v['code_rebuilds']} "
                   f"replicas_agree={v['replicas_agree']} arithmetic={arith_ok} "

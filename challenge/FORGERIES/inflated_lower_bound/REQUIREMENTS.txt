@@ -1,0 +1,6 @@
+# Exactly what verifiers/verify_closures.py needs.
+# 'cryptography' was previously undocumented: without it the Ed25519
+# signature check fails SAFELY (NOT PROMOTABLE), so the documented
+# '6/6 PROMOTABLE' was unreachable on a minimal environment.
+numpy>=1.24
+cryptography>=41

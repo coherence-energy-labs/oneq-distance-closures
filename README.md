@@ -4,9 +4,9 @@ Certified exact distances for six previously unresolved PBB codes from IBM's
 qcode-discovery catalogue. Companion to
 [qiskit-community/qcode-discovery#2](https://github.com/qiskit-community/qcode-discovery/pull/2).
 
-## Verify in one command (~2 minutes, Python 3.10+ and numpy)
+## Verify in one command (~2 minutes, Python 3.10+, numpy and cryptography)
 
-    cd oneq-ibm-distance-closures-v1.0.2
+    cd oneq-ibm-distance-closures-v1.0.3
     PYTHONPATH=. python verifiers/verify_closures.py
 
 Expected: `6/6 closures fully re-verified ... 6/6 PROMOTABLE`.
@@ -23,7 +23,7 @@ reject all seven:
 
 Tree-hash pin for the VALID bundle (compare against what the runner prints):
 
-    27fc8f243412f5855d54524a48d21bf2806a337313b3f243e7fade57545c9af7
+    (see PIN.txt -- computed over the bytes git serves, validated by fresh clone)
 
 Run it, publish your unedited log, fill `challenge/ATTESTATION_TEMPLATE.json`.
 An ambiguity report is as valuable as an attestation.
@@ -42,13 +42,13 @@ succinctly machine-checkable — see `LIMITATIONS.md` in the bundle. One closure
 * **Evidence** (certificates, witnesses, reports): **CC-BY-4.0** — reuse
   freely **with attribution** to Coherence Energy Labs.
 * Certificates are Ed25519-signed; issuer public keys are pinned in
-  `oneq-ibm-distance-closures-v1.0.2/ISSUERS.json`. A signature proves
+  `oneq-ibm-distance-closures-v1.0.3/ISSUERS.json`. A signature proves
   authorship; the archive SHA-256 below proves integrity.
 
-Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.2.tar.gz`, attached to the
-v1.0.2 release):
+Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.3.tar.gz`, attached to the
+v1.0.3 release):
 
-    4ac50d664ca066588ec5122b1c1239eeb57a35405d8f9962d572b21b8892cdc6
+    8df0c8a61c9b7d6bbea3b346153f8513baad2901de9cb7c8c12d785e9d8339d2
 
 ## Validating the catalogue rows
 
@@ -56,7 +56,7 @@ v1.0.2 release):
 (row scope, unchanged distances, bound and candidate recomputation, hash
 formats, witness sizes, replica distinctness, and issuer-registry pinning):
 
-    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.2/ISSUERS.json
+    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.3/ISSUERS.json
 
 ## Trust-root note — v1.0.2 SUPERSEDES v1.0.1
 
@@ -69,3 +69,17 @@ format, and active/revoked disjointness. The three issuer forgeries in
 `challenge/` are the permanent proof this stays fixed.
 
 Cite via `CITATION.cff`.
+
+## Integrity, and how it was broken before
+
+    cd oneq-ibm-distance-closures-v1.0.3 && sha256sum -c SHA256SUMS   # 58/58 OK
+
+v1.0.0 through v1.0.2 each shipped an artifact that did not match its own
+description: a crash on other machines, then directory/archive drift, then a
+tree-hash pin no clean clone could reproduce (57/57 files failing their own
+manifest) plus a manifest that predated the verifier fix. Root cause of the
+last two: line-ending conversion between the authoring machine and git. This
+release adds  with , normalizes every text file to
+LF, regenerates SHA256SUMS **after** the final edit, and -- the part that was
+missing -- validates the published pin **from a fresh clone on which nothing
+was authored** before the pin is published at all.

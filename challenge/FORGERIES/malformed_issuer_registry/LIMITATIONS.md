@@ -51,3 +51,22 @@ These are six codes. Nothing here claims a general speedup, a bound on what
 remains reachable in the catalogue, or that the method scales to arbitrary
 parameters. `ERRATA.json` lists every claim this programme retracted, several
 withdrawn by its own gates before publication.
+
+## v1.0.2 supersedes v1.0.1 — trust-root fix
+
+v1.0.1's bundled verifier **failed open**: `_trusted_pubkeys()` returned an
+empty set when `ISSUERS.json` was missing or malformed, and the caller read
+`if trusted and key not in trusted`, so an empty registry disabled issuer
+pinning entirely and the certificate was checked against the public key
+embedded inside itself. An attacker who deleted or corrupted the registry
+could self-sign a certificate that passed the authenticity check.
+
+v1.0.2 fails **closed**: no valid registry, a revoked key, or an unpinned key
+each cause refusal. The loader validates the schema pin, 64-hex key format,
+active/revoked disjointness, and duplicates.
+
+**The certificates are unchanged and were never affected** — they carry the
+correct active key, and the published registry lists it as active. What
+changed is the verifier's behaviour under a damaged trust registry.
+
+v1.0.1 remains downloadable for provenance, and should not be used to verify.
