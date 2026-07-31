@@ -48,7 +48,7 @@ succinctly machine-checkable — see `LIMITATIONS.md` in the bundle. One closure
 Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.3.tar.gz`, attached to the
 v1.0.3 release):
 
-    0bc75a293f48b761d49fd6a1acb39f28546db9e67cd8ede6a29d70186294cf5d
+    fac4b1d197776af948cbae8f3024d907200e08b74d8392866786ae2aac93644d
 
 ## Validating the catalogue rows
 
