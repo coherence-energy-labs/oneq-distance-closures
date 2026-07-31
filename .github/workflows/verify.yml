@@ -21,15 +21,10 @@ jobs:
       - name: pin files are bare hex + LF (three CR bugs deep)
         run: |
           for f in PIN_ARCHIVE.txt challenge/RELEASE_PIN.txt; do
-            python - "$f" <<'PY'
-          import re, sys, pathlib
-          b = pathlib.Path(sys.argv[1]).read_bytes()
-          assert b.endswith(b"
-") and b"" not in b, f"{sys.argv[1]}: CR or missing LF"
-          assert re.fullmatch(rb"[0-9a-f]{64}
-", b), f"{sys.argv[1]}: not 64 hex + LF"
-          print(f"{sys.argv[1]} OK")
-          PY
+            if grep -q $'' "$f"; then echo "$f contains CR"; exit 1; fi
+            if ! grep -qE '^[0-9a-f]{64}$' "$f"; then echo "$f is not 64 hex"; exit 1; fi
+            if [ "$(wc -l < "$f")" != "1" ]; then echo "$f is not exactly one LF line"; exit 1; fi
+            echo "$f OK"
           done
 
       - name: manifest -- every file matches SHA256SUMS
