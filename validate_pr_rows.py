@@ -17,7 +17,7 @@ import sys
 CLONE = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(".")
 F = "results/campaign7_publication_merged.jsonl"
 REL_ISSUERS = (pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else
-               pathlib.Path("release/oneq-ibm-distance-closures-v1.0.2/ISSUERS.json"))
+               pathlib.Path("release/oneq-ibm-distance-closures-v1.0.3/ISSUERS.json"))
 SIX_KEYS = {"9_6_0172", "phase2_64", "phase2_65", "12_6_0199", "12_6_0201",
             "bliss:0571f76786029653"}
 
@@ -68,7 +68,7 @@ for r in changed:
           and r.get("trust_level") == "EXACT"
           and r.get("d_is_upper_bound") is False)
     check(f"{k}: release not revoked",
-          src.get("release") == "oneq-ibm-distance-closures-v1.0.2",
+          src.get("release") == "oneq-ibm-distance-closures-v1.0.3",
           src.get("release", "?"))
     # bound recomputes from depth + deficiencies
     p = src.get("depth_swept_p")
