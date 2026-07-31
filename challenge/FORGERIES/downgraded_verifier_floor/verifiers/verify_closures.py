@@ -653,8 +653,13 @@ def main() -> int:
           f"(code rebuild + witness + bookkeeping + replica agreement)")
     print(f"{promotable}/{total} PROMOTABLE (adds: schema >= {VERIFIER_MIN_VERSION}, "
           f"hashes recomputed and matching, replica information sets provably distinct)")
-    print("NOTE: the LOWER bound's exhaustiveness is not re-checked here -- only "
-          "re-running the enumeration can establish that.")
+    print("NOTE: this verifier re-checks the UPPER bound (witness), the "
+          "bookkeeping and the signatures. It does NOT re-run the "
+          "enumeration.")
+    print("      The LOWER bound now has a machine-checkable certificate: "
+          "see certificates_lrat/ -- an LRAT proof that no logical of "
+          "qubit weight <= d-1 exists, checkable with lrat-check in "
+          "minutes without re-running anything of ours.")
     return 0 if ok == total else 1
 
 

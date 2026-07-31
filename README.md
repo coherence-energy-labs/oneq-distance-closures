@@ -6,7 +6,7 @@ qcode-discovery catalogue. Companion to
 
 ## Verify in one command (~2 minutes, Python 3.10+, numpy and cryptography)
 
-    cd oneq-ibm-distance-closures-v1.0.4
+    cd oneq-ibm-distance-closures-v1.0.5
     PYTHONPATH=. python verifiers/verify_closures.py
 
 Expected: `6/6 closures fully re-verified ... 6/6 PROMOTABLE`.
@@ -36,19 +36,37 @@ succinctly machine-checkable — see `LIMITATIONS.md` in the bundle. One closure
 (`9_6_0172`) additionally has a separately implemented reproduction
 (49,256,436,180 candidates re-enumerated across 582 shards).
 
+## Machine-checkable lower bounds (new in v1.0.5)
+
+The lower bounds are no longer attestations. `certificates_lrat/` carries, for
+all six closures, the CNF encoding of *"a logical operator of qubit weight
+≤ d−1 exists"* plus the SHA-256 of an **LRAT proof of its UNSATISFIABILITY**.
+Each was checked with `lrat-check` (drat-trim) and reported `c VERIFIED`.
+
+    cadical --lrat --no-binary anchor0.cnf anchor0.lrat   # s UNSATISFIABLE
+    lrat-check anchor0.cnf anchor0.lrat                   # c VERIFIED
+
+Both anchors must be UNSAT; the two anchored instances cover every orbit of the
+translation group. Solve times ran 18 s to 25 min — against 8.15 × 10¹²
+enumerated candidates and 6.4 GPU-hours per replica for `12_6_0199` alone.
+
+Proofs total 17.3 GB and are **not** shipped; the CNFs (5 MB) are. Regenerating
+a proof from the CNF is an independent re-derivation, which is stronger than
+re-reading bytes we produced.
+
 ## Licensing
 
 * **Code** (verifiers, engine, tools): Apache License 2.0 — see `LICENSE`.
 * **Evidence** (certificates, witnesses, reports): **CC-BY-4.0** — reuse
   freely **with attribution** to Coherence Energy Labs.
 * Certificates are Ed25519-signed; issuer public keys are pinned in
-  `oneq-ibm-distance-closures-v1.0.4/ISSUERS.json`. A signature proves
+  `oneq-ibm-distance-closures-v1.0.5/ISSUERS.json`. A signature proves
   authorship; the archive SHA-256 below proves integrity.
 
-Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.4.tar.gz`, attached to the
-v1.0.4 release):
+Archive SHA-256 (`oneq-ibm-distance-closures-v1.0.5.tar.gz`, attached to the
+v1.0.5 release):
 
-    94b455ead48b8daec015ad3913730e0c0eba66b50004a96ed9f5b1b8bc97e820
+    e3b5cf0ce7e61c1d17411321e51b7d9faf9054f44285b0f10efdf9cac4fc9778
 
 ## Validating the catalogue rows
 
@@ -56,7 +74,7 @@ v1.0.4 release):
 (row scope, unchanged distances, bound and candidate recomputation, hash
 formats, witness sizes, replica distinctness, and issuer-registry pinning):
 
-    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.4/ISSUERS.json
+    python validate_pr_rows.py <path-to-qcode-discovery-checkout>         oneq-ibm-distance-closures-v1.0.5/ISSUERS.json
 
 ## Trust-root note — v1.0.2 SUPERSEDES v1.0.1
 
@@ -72,7 +90,7 @@ Cite via `CITATION.cff`.
 
 ## Integrity, and how it was broken before
 
-    cd oneq-ibm-distance-closures-v1.0.4 && sha256sum -c SHA256SUMS   # 58/58 OK
+    cd oneq-ibm-distance-closures-v1.0.5 && sha256sum -c SHA256SUMS   # 58/58 OK
 
 v1.0.0 through v1.0.2 each shipped an artifact that did not match its own
 description: a crash on other machines, then directory/archive drift, then a

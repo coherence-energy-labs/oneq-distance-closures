@@ -84,3 +84,20 @@ v1.0.4 is uploaded exactly ONCE, after CI is green, and its hash is compared to
 the catalogue rows by `validate_pr_rows.py` -- a check that did not exist
 before, which is precisely why 103/103 could pass while the pin pointed at
 vanished bytes. The certificates are unchanged and have never changed.
+
+## v1.0.5 — the lower bounds are now machine-checkable
+
+Earlier releases stated plainly that the lower bound was an exhaustive-absence
+claim with no succinct proof object, verifiable only by re-execution. That
+limitation is **retired**: `certificates_lrat/` carries, for all six closures,
+the CNF encoding of "a logical operator of qubit weight <= d-1 exists" together
+with the SHA-256 of an LRAT proof of its UNSATISFIABILITY. Every proof was
+checked with `lrat-check` (drat-trim project) and reported `c VERIFIED`.
+
+Proof sizes run 9 MB to 7.3 GB (17.3 GB total), so the proofs are not shipped;
+the CNFs are, at 5 MB. Regenerating a proof from the CNF takes seconds to
+minutes and is a stronger check than re-reading bytes we produced.
+
+What still requires trust: that the code was reconstructed faithfully from the
+catalogue row. That is why `code_input_hash` is recorded and the verifier
+re-derives the reconstruction independently.

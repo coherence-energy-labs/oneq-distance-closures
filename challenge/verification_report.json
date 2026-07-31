@@ -1,6 +1,6 @@
 {
   "VALID_accepted": true,
-  "VALID_tree_sha256": "5342399b139e2d3107d314eab51389867fa5dfcb28f66b92c8fc86f62b2f638e",
+  "VALID_tree_sha256": "ba95807b427d79311918e1f26ee8bf796f3770f4cb2ed885e388ad2046132881",
   "forgery_altered_information_set_rejected": true,
   "forgery_downgraded_verifier_floor_rejected": true,
   "forgery_inflated_lower_bound_rejected": true,

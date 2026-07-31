@@ -1,0 +1,178 @@
+{
+  "schema": "oneq-lrat-publishable/1",
+  "claim": "for each code, no logical operator of qubit weight <= W = d-1 exists",
+  "why_cnfs_not_proofs": "The CNF is small and exact; the proofs total 16 GB. A verifier who regenerates the proof from the CNF performs an INDEPENDENT re-derivation; re-reading proof bytes we produced only checks transmission. Every proof's SHA-256 is pinned here so a regenerated proof can also be compared byte-for-byte.",
+  "how_to_verify": [
+    "cadical --lrat --no-binary anchorN.cnf anchorN.lrat   # s UNSATISFIABLE",
+    "lrat-check anchorN.cnf anchorN.lrat                   # c VERIFIED",
+    "BOTH anchors must be UNSAT: the two anchored instances cover every orbit of the translation group, so both UNSAT proves absence."
+  ],
+  "encoding": {
+    "commutation": "XOR chain per stabilizer row (v in N(S))",
+    "not_a_stabilizer": "v anticommutes with >=1 logical rep (v not in S)",
+    "weight": "sum of w_q = x_q OR z_q, sequential-counter cardinality <= W",
+    "anchoring": "Z_ell x Z_m acts freely block-wise; every nonzero operator has a translate touching block-1 qubit 0, or lies in block 2 touching block-2 qubit 0"
+  },
+  "validated_by": [
+    "evidence/sat_encoding_validation.json (both directions)",
+    "evidence/seeded_counterexample.json (search can still see)"
+  ],
+  "rows": [
+    {
+      "code_id": "0571f76786029653",
+      "n": 108,
+      "k": 2,
+      "d": 10,
+      "W": 9,
+      "solver_seconds": 1524.1,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "f9ecf92cc336102e361d8b6a01a83be25241b42e2233bbea05ae6471789da996",
+          "cnf_bytes": 363155,
+          "proof_sha256": "bae2cfb8f42560327cabffdf07518cf9d0d0886e88ad9401f01a4f118bb7730b",
+          "proof_bytes": 7662219419,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "e82640ecd71a5a0e7c9e3ea4e1cde0ad7432c727406f7a3659245762f89d07d5",
+          "cnf_bytes": 363587,
+          "proof_sha256": "9f54f2175633f763e16997a5e77ab185ef446c1c1a5905a67162c977d86ff14d",
+          "proof_bytes": 588349925,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    },
+    {
+      "code_id": "12_6_0199",
+      "n": 144,
+      "k": 4,
+      "d": 12,
+      "W": 11,
+      "solver_seconds": 399.2,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "ec650e2aafaa502f471c528966b82bb947061df8eadf5330c25b0a355ed2e416",
+          "cnf_bytes": 477101,
+          "proof_sha256": "3ebe00169d7107cb44cbc548f5b358555715799882fb001922bd9db905696e0d",
+          "proof_bytes": 2893684008,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "4627b989a0207c05811569ff9fdd2657982fa50e43c53d4c6074998cd5edca8d",
+          "cnf_bytes": 477677,
+          "proof_sha256": "498a192c9f02a80378df85860e67f2f5efaab69820b42640bcbbee90d9098d80",
+          "proof_bytes": 8889199,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    },
+    {
+      "code_id": "12_6_0201",
+      "n": 144,
+      "k": 8,
+      "d": 8,
+      "W": 7,
+      "solver_seconds": 321.4,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "930a8a4050da3a86952d901f3a842153e226764d525ad163150d9af6c447b652",
+          "cnf_bytes": 631594,
+          "proof_sha256": "e8c4d758579262e9ad69c6f5be50b0e56a6354a48cbdc9c120108f179fb873bf",
+          "proof_bytes": 1643338448,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "18965b0c2990386c3c63dead51ec14bddaad49ca3d6329e0bfca31ffe65728db",
+          "cnf_bytes": 632170,
+          "proof_sha256": "ea0ce84d1baa1c4cf04e8c8f1c5803dcda49b12439b19e78ce6d5708fb893b4f",
+          "proof_bytes": 239586126,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    },
+    {
+      "code_id": "9_6_0172",
+      "n": 108,
+      "k": 2,
+      "d": 10,
+      "W": 9,
+      "solver_seconds": 615.9,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "af5455f5f039a406ccf37c246b3ec84245c8882ee953146766c7881206c016bb",
+          "cnf_bytes": 331946,
+          "proof_sha256": "d2b88a66656469ca47f77d8245552e231b0354f07dcc90b4400416659d26cdfd",
+          "proof_bytes": 3733882232,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "fb433eae3af004013645dc039077f05a19287a46205c1621364c52ed86fd7140",
+          "cnf_bytes": 332378,
+          "proof_sha256": "2c96886db744200483b66076e454c86e98ab540992a7ba1d70fd730560d16f30",
+          "proof_bytes": 103209499,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    },
+    {
+      "code_id": "phase2_64",
+      "n": 108,
+      "k": 6,
+      "d": 8,
+      "W": 7,
+      "solver_seconds": 39.0,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "d509a4ea966d370169e4c853a06eba27c011baa7668d1504423f8152dc3014a9",
+          "cnf_bytes": 335918,
+          "proof_sha256": "85f094f44b5adc6d4df2825a47b48eb184466968a34a1b82403044dc25a8eb32",
+          "proof_bytes": 261965819,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "47a16cc7d4fb8e1980a06543a048a797eecc786f699b72c2837e6d522ad39d14",
+          "cnf_bytes": 336350,
+          "proof_sha256": "37b59904d0f6ae37608a9e29535b3d7d4bdbcc5f9cad20de15e1b0789d189908",
+          "proof_bytes": 31302558,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    },
+    {
+      "code_id": "phase2_65",
+      "n": 108,
+      "k": 6,
+      "d": 8,
+      "W": 7,
+      "solver_seconds": 18.2,
+      "anchors": [
+        {
+          "case": 0,
+          "cnf_sha256": "54a676824c7fea4522c8cbed2c9b80a1211b39433b422ad8e30095cbf7f77f74",
+          "cnf_bytes": 341606,
+          "proof_sha256": "0e9c6acc59049e7c25f1656bb812afa1243fa2d0cb3cd5ee28e134f605f99960",
+          "proof_bytes": 116800619,
+          "lrat_check": "c VERIFIED"
+        },
+        {
+          "case": 1,
+          "cnf_sha256": "68bce2bc21b76fd4520bac4529145420b801c18eda3dfafbcdb4ee06caea1905",
+          "cnf_bytes": 342038,
+          "proof_sha256": "1af5d7db8dc631950532f25192aaf3ac3a82a40c118b588db6f6b32870220763",
+          "proof_bytes": 16277387,
+          "lrat_check": "c VERIFIED"
+        }
+      ]
+    }
+  ]
+}

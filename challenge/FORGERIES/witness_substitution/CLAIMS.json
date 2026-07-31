@@ -1,5 +1,5 @@
 {
-  "release": "oneq-ibm-distance-closures-v1.0.4",
+  "release": "oneq-ibm-distance-closures-v1.0.5",
   "closures": 6,
   "schema_version": "2.0.0",
   "searcher_version": "2.0.0",
@@ -155,5 +155,12 @@
       "9_6_0172"
     ]
   },
-  "lower_bound_is_machine_checkable": false
+  "lower_bound_is_machine_checkable": false,
+  "lower_bound_certificates": {
+    "present": true,
+    "format": "LRAT (CaDiCaL), checked by lrat-check",
+    "location": "certificates_lrat/",
+    "claim": "no logical operator of qubit weight <= d-1 exists, per code",
+    "note": "This supersedes the earlier statement that the lower bound has no succinct machine-checkable proof object. It does now."
+  }
 }
