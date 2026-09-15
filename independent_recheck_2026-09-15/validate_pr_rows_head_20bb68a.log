@@ -1,0 +1,119 @@
+validate_pr_rows: 368 rows (new) vs 368 rows (base)
+
+  [PASS] issuer registry schema is oneq-issuers/1
+  [PASS] registry lists exactly one ACTIVE issuer
+  [PASS] active and revoked sets are disjoint
+  [PASS] every active key is 64-hex
+  [PASS] every JSONL line parses -- 368 lines
+  [PASS] row count unchanged
+  [PASS] exactly six intended rows changed -- ['12_6_0199', '12_6_0201', '9_6_0172', 'bliss:0571f76786029653', 'phase2_64', 'phase2_65']
+  [PASS] 12_6_0199: d unchanged -- 12 -> 12
+  [PASS] 12_6_0199: flags coherent
+  [PASS] 12_6_0199: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] 12_6_0199: bound recomputes -- sum(max(0,7+1-delta)) = 12, d = 12
+  [PASS] 12_6_0199: candidates recompute -- 8,149,473,282,198 vs 8,149,473,282,198
+  [PASS] 12_6_0199: code_input_hash is 64-hex
+  [PASS] 12_6_0199: witness_hash is 64-hex
+  [PASS] 12_6_0199: artifact_sha256 is 64-hex
+  [PASS] 12_6_0199: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] 12_6_0199: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] 12_6_0199: exactness timestamp present
+  [PASS] 12_6_0199: witness support INLINE and |support| == d -- |support|=12
+  [PASS] 12_6_0199: replica IS distinct -- ['f653be453896d196', 'b9b3548d69a73f54']
+  [PASS] 12_6_0199: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] 12_6_0199: fingerprint prefixes the pubkey
+  [PASS] 12_6_0199: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] 12_6_0199: issuer is not revoked
+  [PASS] 12_6_0199: witness encoding declared
+  [PASS] 12_6_0201: d unchanged -- 8 -> 8
+  [PASS] 12_6_0201: flags coherent
+  [PASS] 12_6_0201: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] 12_6_0201: bound recomputes -- sum(max(0,7+1-delta)) = 8, d = 8
+  [PASS] 12_6_0201: candidates recompute -- 4,945,164,656,133 vs 4,945,164,656,133
+  [PASS] 12_6_0201: code_input_hash is 64-hex
+  [PASS] 12_6_0201: witness_hash is 64-hex
+  [PASS] 12_6_0201: artifact_sha256 is 64-hex
+  [PASS] 12_6_0201: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] 12_6_0201: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] 12_6_0201: exactness timestamp present
+  [PASS] 12_6_0201: witness support INLINE and |support| == d -- |support|=8
+  [PASS] 12_6_0201: replica IS distinct -- ['7eeee80143cef13f', '49ce612a66c41a42']
+  [PASS] 12_6_0201: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] 12_6_0201: fingerprint prefixes the pubkey
+  [PASS] 12_6_0201: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] 12_6_0201: issuer is not revoked
+  [PASS] 12_6_0201: witness encoding declared
+  [PASS] phase2_64: d unchanged -- 8 -> 8
+  [PASS] phase2_64: flags coherent
+  [PASS] phase2_64: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] phase2_64: bound recomputes -- sum(max(0,7+1-delta)) = 8, d = 8
+  [PASS] phase2_64: candidates recompute -- 688,229,434,659 vs 688,229,434,659
+  [PASS] phase2_64: code_input_hash is 64-hex
+  [PASS] phase2_64: witness_hash is 64-hex
+  [PASS] phase2_64: artifact_sha256 is 64-hex
+  [PASS] phase2_64: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] phase2_64: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] phase2_64: exactness timestamp present
+  [PASS] phase2_64: witness support INLINE and |support| == d -- |support|=8
+  [PASS] phase2_64: replica IS distinct -- ['deb2e5e4cb05f68e', '7f2a8ffc2fca97a7']
+  [PASS] phase2_64: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] phase2_64: fingerprint prefixes the pubkey
+  [PASS] phase2_64: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] phase2_64: issuer is not revoked
+  [PASS] phase2_64: witness encoding declared
+  [PASS] phase2_65: d unchanged -- 8 -> 8
+  [PASS] phase2_65: flags coherent
+  [PASS] phase2_65: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] phase2_65: bound recomputes -- sum(max(0,7+1-delta)) = 8, d = 8
+  [PASS] phase2_65: candidates recompute -- 688,229,434,659 vs 688,229,434,659
+  [PASS] phase2_65: code_input_hash is 64-hex
+  [PASS] phase2_65: witness_hash is 64-hex
+  [PASS] phase2_65: artifact_sha256 is 64-hex
+  [PASS] phase2_65: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] phase2_65: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] phase2_65: exactness timestamp present
+  [PASS] phase2_65: witness support INLINE and |support| == d -- |support|=8
+  [PASS] phase2_65: replica IS distinct -- ['a79d12d38d27fdfa', '7ea6d9bb33bd2690']
+  [PASS] phase2_65: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] phase2_65: fingerprint prefixes the pubkey
+  [PASS] phase2_65: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] phase2_65: issuer is not revoked
+  [PASS] phase2_65: witness encoding declared
+  [PASS] 9_6_0172: d unchanged -- 10 -> 10
+  [PASS] 9_6_0172: flags coherent
+  [PASS] 9_6_0172: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] 9_6_0172: bound recomputes -- sum(max(0,6+1-delta)) = 10, d = 10
+  [PASS] 9_6_0172: candidates recompute -- 49,256,436,180 vs 49,256,436,180
+  [PASS] 9_6_0172: code_input_hash is 64-hex
+  [PASS] 9_6_0172: witness_hash is 64-hex
+  [PASS] 9_6_0172: artifact_sha256 is 64-hex
+  [PASS] 9_6_0172: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] 9_6_0172: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] 9_6_0172: exactness timestamp present
+  [PASS] 9_6_0172: witness support INLINE and |support| == d -- |support|=10
+  [PASS] 9_6_0172: replica IS distinct -- ['c5d96475dc924820', 'a8974a9d43d56d1b']
+  [PASS] 9_6_0172: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] 9_6_0172: fingerprint prefixes the pubkey
+  [PASS] 9_6_0172: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] 9_6_0172: issuer is not revoked
+  [PASS] 9_6_0172: witness encoding declared
+  [PASS] bliss:0571f76786029653: d unchanged -- 10 -> 10
+  [PASS] bliss:0571f76786029653: flags coherent
+  [PASS] bliss:0571f76786029653: release matches the bundle being validated -- oneq-ibm-distance-closures-v1.0.5 vs oneq-ibm-distance-closures-v1.0.5
+  [PASS] bliss:0571f76786029653: bound recomputes -- sum(max(0,6+1-delta)) = 10, d = 10
+  [PASS] bliss:0571f76786029653: candidates recompute -- 49,256,436,180 vs 49,256,436,180
+  [PASS] bliss:0571f76786029653: code_input_hash is 64-hex
+  [PASS] bliss:0571f76786029653: witness_hash is 64-hex
+  [PASS] bliss:0571f76786029653: artifact_sha256 is 64-hex
+  [PASS] bliss:0571f76786029653: artifact_sha256 == the PUBLISHED archive pin -- row e3b5cf0ce7e61c1d... vs published e3b5cf0ce7e61c1d...
+  [PASS] bliss:0571f76786029653: artifact_url names the same version as release -- oneq-ibm-distance-closures-v1.0.5 vs v1.0.5
+  [PASS] bliss:0571f76786029653: exactness timestamp present
+  [PASS] bliss:0571f76786029653: witness support INLINE and |support| == d -- |support|=10
+  [PASS] bliss:0571f76786029653: replica IS distinct -- ['6ca230067d20d44a', 'd62d63a58e126dd4']
+  [PASS] bliss:0571f76786029653: issuer_pubkey is 64-hex -- 1eace2ebc1edd8795ad5
+  [PASS] bliss:0571f76786029653: fingerprint prefixes the pubkey
+  [PASS] bliss:0571f76786029653: issuer matches the ACTIVE key in ISSUERS.json -- 1eace2ebc1edd879
+  [PASS] bliss:0571f76786029653: issuer is not revoked
+  [PASS] bliss:0571f76786029653: witness encoding declared
+
+RESULT: ALL CHECKS PASS
