@@ -1,0 +1,14 @@
+start 15:20:45; free memory: 10 GB
+0571f76786029653_W9_anchor1 solver_exit=20 solve_s=162 proof_bytes=918624906 check_exit=0 check_s=28 verdict=[c VERIFIED] proof_sha256=c9ad81dbf2f8e46835e1715410c90ef0cbbd8f3d0d5a40cea0b32001557ca1d0
+12_6_0199_W11_anchor0 solver_exit=20 solve_s=606 proof_bytes=4933817392 check_exit=0 check_s=127 verdict=[c VERIFIED] proof_sha256=7dddbba09b3a7c557804a5a408819331a9add87ca9a9e7b67272b0f9441fa2cf
+12_6_0199_W11_anchor1 solver_exit=20 solve_s=3 proof_bytes=25523140 check_exit=0 check_s=0 verdict=[c VERIFIED] proof_sha256=7b4534e24b9239b9a781dce0faef465f16d414f25018bb2fc8361a7b7161b3b4
+12_6_0201_W7_anchor0 solver_exit=20 solve_s=265 proof_bytes=1243010231 check_exit=0 check_s=35 verdict=[c VERIFIED] proof_sha256=f09f17158830244d169bb7625d4d1bf2a5e5df07756e665a7fa09895be924cc4
+12_6_0201_W7_anchor1 solver_exit=20 solve_s=44 proof_bytes=340411317 check_exit=0 check_s=10 verdict=[c VERIFIED] proof_sha256=ba350cc369d5e6f5c948b50a78df761ff12370cddca2a3e47fe40d52c253ea2e
+0571f76786029653_W9_anchor0 solver_exit=20 solve_s=1691 proof_bytes=7221193364 check_exit=0 check_s=203 verdict=[c VERIFIED] proof_sha256=23509c782be4e8fa4998bc4349dd76ac97b4f1fc5c521045976636e8b7475a4c
+9_6_0172_W9_anchor1 solver_exit=20 solve_s=17 proof_bytes=148981543 check_exit=0 check_s=4 verdict=[c VERIFIED] proof_sha256=3835c698e77c26af1d264b90e615f1a72262361c7fa18c5d029429d68e72d304
+phase2_64_W7_anchor0 solver_exit=20 solve_s=44 proof_bytes=342478206 check_exit=0 check_s=10 verdict=[c VERIFIED] proof_sha256=8afa8912cfef26a2a8000a57dfc91db4ca7e4fbdeaaa2ce9611e784fb180ec30
+phase2_64_W7_anchor1 solver_exit=20 solve_s=9 proof_bytes=82775452 check_exit=0 check_s=3 verdict=[c VERIFIED] proof_sha256=4d0a431928726c436b2db7f2767f77a32ea94b99038f3622ab133ef2abb080e1
+phase2_65_W7_anchor0 solver_exit=20 solve_s=23 proof_bytes=223979575 check_exit=0 check_s=7 verdict=[c VERIFIED] proof_sha256=fdd4a9ce902ff555b1fd5acf4b2d6bb710ea2ce922581b1173a0eb66da49556b
+phase2_65_W7_anchor1 solver_exit=20 solve_s=3 proof_bytes=29116153 check_exit=0 check_s=1 verdict=[c VERIFIED] proof_sha256=d1e095d4be8891a342a1fe55f71064f67783273e6df340d57a7a4abd46aa6694
+9_6_0172_W9_anchor0 solver_exit=20 solve_s=834 proof_bytes=4269786893 check_exit=0 check_s=110 verdict=[c VERIFIED] proof_sha256=7b1101ae6efa84b453b23af3d5d06065b50176b968fcdd7788593d5f54759579
+done 15:57:58

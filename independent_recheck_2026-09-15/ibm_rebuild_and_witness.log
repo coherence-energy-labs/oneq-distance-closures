@@ -1,0 +1,52 @@
+12_6_0199          n=144 k=4 d=12 rank=140 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+12_6_0201          n=144 k=8 d=8 rank=136 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+phase2_64          n=108 k=6 d=8 rank=102 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+phase2_65          n=108 k=6 d=8 rank=102 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+9_6_0172           n=108 k=2 d=10 rank=106 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+0571f76786029653   n=108 k=2 d=10 rank=106 -> ALL CHECKS PASS
+    ok   IBM row and PR row describe the same code
+    ok   n matches the row
+    ok   k from IBM's code object matches the row
+    ok   k from the GF(2) rank matches the row
+    ok   witness weight equals d
+    ok   witness commutes with every stabilizer (IBM's matrix)
+    ok   witness is not a stabilizer (rank rises)
+control_6_6_0099           n=72 k=4 d=8 IBM method=milp_exact -> rebuilt, n and k match
+control_phase2_2           n=36 k=4 d=6 IBM method=exact_w6 -> rebuilt, n and k match
+control_phase2_3           n=36 k=4 d=6 IBM method=exact_w6 -> rebuilt, n and k match
+IBM RECONSTRUCTION AND WITNESSES: ALL SIX PASS

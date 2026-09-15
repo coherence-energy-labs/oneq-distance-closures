@@ -1,0 +1,189 @@
+=== VALID bundle (must ACCEPT: verifier output AND tree hash == pin) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+6/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+VALID tree sha256: ba95807b427d79311918e1f26ee8bf796f3770f4cb2ed885e388ad2046132881
+>> Compare this hash to the pin in the PUBLIC POST (not this bundle):
+>> local RELEASE_PIN.txt says: ba95807b427d79311918e1f26ee8bf796f3770f4cb2ed885e388ad2046132881 -- authority is the public post
+=== FORGERY altered_information_set (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=MISMATCH/ABSENT IS_distinct=True -> NOT PROMOTABLE
+    ! recomputed hashes DISAGREE with the recorded block: ['information_set_hash']
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+5/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY downgraded_verifier_floor (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 0.0.1)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+6/6 PROMOTABLE (adds: schema >= 0.0.1, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY inflated_lower_bound (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=False witness=NOT CHECKABLE
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+
+5/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+5/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY malformed_issuer_registry (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+0/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY missing_issuer_registry (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+0/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY revoked_issuer (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> NOT PROMOTABLE
+
+6/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+0/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+=== FORGERY witness_substitution (must REJECT) ===
+verifier 2.0.0 (promotion floor: schema >= 2.0.0)
+catalogue 839c0ea6cc3d7d19e2f405eb6287e0dd... -> PINNED REVISION
+
+0571f76786029653     published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0199            published d<=12 exact=False -> claimed d=12 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+12_6_0201            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+9_6_0172             published d<=10 exact=False -> claimed d=10 | rebuild=True replicas_agree=True arithmetic=True witness=NOT CHECKABLE
+                     schema=2.0.0 hashes=MISMATCH/ABSENT IS_distinct=True -> NOT PROMOTABLE
+    ! FORGED OR MALFORMED WITNESS -- refused: TypeError: cannot unpack non-iterable int object. Expected [qubit_index, pauli_code] pairs.
+    ! recomputed hashes DISAGREE with the recorded block: ['witness_hash']
+    ! FORGED OR MALFORMED WITNESS -- refused: TypeError: cannot unpack non-iterable int object. Expected [qubit_index, pauli_code] pairs.
+    ! recomputed hashes DISAGREE with the recorded block: ['witness_hash']
+phase2_64            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+phase2_65            published d<=8 exact=False -> claimed d=8 | rebuild=True replicas_agree=True arithmetic=True witness=VERIFIED
+                     schema=2.0.0 hashes=RECOMPUTED-MATCH IS_distinct=True -> PROMOTABLE
+
+5/6 closures fully re-verified from the artifact (code rebuild + witness + bookkeeping + replica agreement)
+5/6 PROMOTABLE (adds: schema >= 2.0.0, hashes recomputed and matching, replica information sets provably distinct)
+NOTE: this verifier re-checks the UPPER bound (witness), the bookkeeping and the signatures. It does NOT re-run the enumeration.
+      The LOWER bound now has a machine-checkable certificate: see certificates_lrat/ -- an LRAT proof that no logical of qubit weight <= d-1 exists, checkable with lrat-check in minutes without re-running anything of ours.
+{
+  "VALID_accepted": true,
+  "VALID_tree_sha256": "ba95807b427d79311918e1f26ee8bf796f3770f4cb2ed885e388ad2046132881",
+  "forgery_altered_information_set_rejected": true,
+  "forgery_downgraded_verifier_floor_rejected": true,
+  "forgery_inflated_lower_bound_rejected": true,
+  "forgery_malformed_issuer_registry_rejected": true,
+  "forgery_missing_issuer_registry_rejected": true,
+  "forgery_revoked_issuer_rejected": true,
+  "forgery_witness_substitution_rejected": true
+}
+CHALLENGE RESULT: ALL CHECKS AS EXPECTED
+challenge exit 0

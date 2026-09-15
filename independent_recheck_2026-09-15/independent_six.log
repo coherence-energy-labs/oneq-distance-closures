@@ -1,0 +1,32 @@
+phase2_64: d=8 PROVEN EXACT by the independent encoding
+  W=7 anchor0: UNSAT, proof VERIFIED (exit 20, 1 s, proof 11 MB, [c VERIFIED])
+  W=7 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=8 anchor0: model VALID (commutes=True not_stabilizer=True weight=8)
+  W=8 anchor1: no model (exit 20)
+phase2_65: d=8 PROVEN EXACT by the independent encoding
+  W=7 anchor0: UNSAT, proof VERIFIED (exit 20, 1 s, proof 10 MB, [c VERIFIED])
+  W=7 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=8 anchor0: model VALID (commutes=True not_stabilizer=True weight=8)
+  W=8 anchor1: no model (exit 20)
+9_6_0172: d=10 PROVEN EXACT by the independent encoding
+  W=9 anchor0: UNSAT, proof VERIFIED (exit 20, 4 s, proof 49 MB, [c VERIFIED])
+  W=9 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=10 anchor0: model VALID (commutes=True not_stabilizer=True weight=10)
+  W=10 anchor1: no model (exit 20)
+0571f76786029653: d=10 PROVEN EXACT by the independent encoding
+  W=9 anchor0: UNSAT, proof VERIFIED (exit 20, 5 s, proof 72 MB, [c VERIFIED])
+  W=9 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=10 anchor0: model VALID (commutes=True not_stabilizer=True weight=10)
+  W=10 anchor1: no model (exit 20)
+12_6_0201: d=8 PROVEN EXACT by the independent encoding
+  W=7 anchor0: UNSAT, proof VERIFIED (exit 20, 1 s, proof 16 MB, [c VERIFIED])
+  W=7 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=8 anchor0: model VALID (commutes=True not_stabilizer=True weight=8)
+  W=8 anchor1: no model (exit 20)
+12_6_0199: d=12 PROVEN EXACT by the independent encoding
+  W=11 anchor0: UNSAT, proof VERIFIED (exit 20, 30 s, proof 363 MB, [c VERIFIED])
+  W=11 anchor1: UNSAT, proof VERIFIED (exit 20, 0 s, proof 0 MB, [c VERIFIED])
+  W=12 anchor0: model VALID (commutes=True not_stabilizer=True weight=12)
+  W=12 anchor1: model VALID (commutes=True not_stabilizer=True weight=12)
+INDEPENDENT DISTANCE CHECK: ALL PROVEN
+exit 0
